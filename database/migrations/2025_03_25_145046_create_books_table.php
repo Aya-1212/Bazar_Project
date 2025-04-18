@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('image');
             $table->mediumText('description');
             $table->string('author');
-            $table->decimial('price',8,2);
+            $table->decimal('price',8,2);
             $table->string('discount');
             $table->decimal('price_after_discount',8,2);
             $table->integer('stock_quantity');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('restricted');
-            $table->foreignId('publisher_id')->constrained('publishers')->onDelete('restricted');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('restrict');
+            $table->foreignId('publisher_id')->constrained('publishers')->onDelete('restrict');
             $table->timestamps();
 
         });

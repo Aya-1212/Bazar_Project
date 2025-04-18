@@ -16,7 +16,6 @@ return new class extends Migration
             $table->decimal('total_amount',12,2);
             $table->enum('status',['pending','processed','shipped','completed'])->default('pending');
             $table->enum('payment_method',['COD'])->default('COD');
-            $table->dateTime('created_at');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('review_id')->constrained('reviews')->onDelete('cascade');
             $table->timestamps();
