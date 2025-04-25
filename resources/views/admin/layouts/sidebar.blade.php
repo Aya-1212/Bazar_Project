@@ -20,7 +20,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="" class="nav-link ">
+                    <a href="{{ url('/admin/home') }}" class="nav-link ">
                     <img src="{{  asset('admin/images') }}/dashboard.gif" alt="Dashboard" style="width: 20px; height: 20px;" />
                     <p>Dashboard</p>
                     </a>
@@ -72,36 +72,31 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/healthcare.png" alt="majors" style="width: 20px; height: 20px;" />
+                    <img src="{{  asset('admin/images') }}/order.gif" alt="majors" style="width: 20px; height: 20px;" />
 
-                        <p>Majors</p>
+                        <p>Orders</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('orders.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add</p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/calendar2.gif" alt="appointments" style="width: 20px; height: 20px;" />
+                    <a href="{{ route('books.index') }}" class="nav-link">
+                    <img src="{{  asset('admin/images') }}/book.gif" alt="appointments" style="width: 20px; height: 20px;" />
 
-                        <p>Appointements</p>
+                        <p>Books</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('books.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>
@@ -116,7 +111,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('messages.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>

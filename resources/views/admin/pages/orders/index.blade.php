@@ -9,8 +9,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12 text-center">
-                        <h1 class="font-weight-bold" style="font-size: 2em; color: #007bff;">Publishers</h1>
-                        <p class="font-weight-normal" style="font-size: 1.2em;">List of all Registered Publishers</p>
+                        <h1 class="font-weight-bold" style="font-size: 2em; color: #007bff;">Orders</h1>
+                        <p class="font-weight-normal" style="font-size: 1.2em;">List of all Orders</p>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -24,7 +24,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title text-center" style="font-size: 1.5em;">Publishers</h3>
+                                <h3 class="card-title text-center" style="font-size: 1.5em;">Orders</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
@@ -36,8 +36,8 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Title</th>
-                                            <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
+                                            <th style="width: 20%; text-align: center; padding: 10px;">Status</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">Payment Method</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
                                         </tr>
