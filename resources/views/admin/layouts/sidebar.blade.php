@@ -28,7 +28,7 @@
                 <!-- -- dropDown---->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/healthcare.gif" alt="Dashboard" style="width: 20px; height: 20px;" />
+                    <img src="{{  asset('admin/images') }}/books.gif" alt="Dashboard" style="width: 20px; height: 20px;" />
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>
@@ -36,13 +36,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('categories.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('categories.add') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add</p>
                             </a>
@@ -51,19 +51,19 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/head.gif" alt="patients" style="width: 20px; height: 20px;" />
-                        <p>Patients</p>
+                    <img src="{{  asset('admin/images') }}/publisher.gif" alt="patients" style="width: 20px; height: 20px;" />
+                        <p>Publishers</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('publishers.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('publishers.add') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add</p>
                             </a>

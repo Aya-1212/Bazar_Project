@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/v1/sign-up', [AuthController::class, "signUp" ]);
 Route::post('/v1/sign-in', [AuthController::class, 'signIn']);
 
-Route::middleware('auth:sanctum')->post('/v1/logout', 
-[AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->group(function(){
+    // Logout
+    Route::post('/v1/logout', [AuthController::class, 'logout']);
+    // Store Message
+    Route::post('/v1/send-message',[MessageController::class,'store']);
+});
+
 
