@@ -37,9 +37,13 @@
                                         <tr>
                                             <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Status</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">Total Amount</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Payment Method</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">User Id</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">Review Id</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">View</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
+                                            <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,22 +56,35 @@
                                                 {{-- {{ $major->title }} --}}
                                             </td>
                                             <td style="text-align: center;">
-                                                <img src="img" alt="=category" class="img-fluid " height="100"
-                                                    width="120">
+                                               
+                                                   
                                             </td>
+                                           <td></td>
+                                           
+                                            <td></td>
+                                           <td></td>
+                                           <td style="text-align: center;">
+                                                
+                                            <form action="#" method="POST">
+                                                {{-- @csrf --}}
+                                                {{-- @method('GET') --}}
+                                                <button class="btn btn-info">View</button>
+                                            </form>
+                                        </td>
+                                                <td style="text-align: center;">
+                                                
+                                                    <form action="#" method="POST">
+                                                        {{-- @csrf --}}
+                                                        {{-- @method('GET') --}}
+                                                        <button class="btn btn-success">Edit</button>
+                                                    </form>
+                                                </td>
+                                           
                                             <td style="text-align: center;">
                                                 <form action="" method="POST">
                                                     {{-- @csrf --}}
                                                     {{-- @method('DELETE') --}}
                                                     <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                
-                                                <form action="#" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('GET') --}}
-                                                    <button class="btn btn-success">Edit</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -32,7 +32,7 @@
                             <div class="icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <a href="" class="small-box-footer">More info <i
+                            <a href="{{ route('users.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
 
@@ -48,7 +48,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-list"></i>
                             </div>
-                            <a href="" class="small-box-footer">More info <i
+                            <a href="{{ route('categories.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-book"></i>
                             </div>
-                            <a href="#table patients" class="small-box-footer">More info <i
+                            <a href="{{ route('books.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-file-invoice-dollar"></i>
                             </div>
-                            <a href="#table patients" class="small-box-footer">More info <i
+                            <a href="{{ route('orders.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
-                            <a href="" class="small-box-footer">More info <i
+                            <a href="{{ route('publishers.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
 
@@ -112,7 +112,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-message"></i>
                             </div>
-                            <a href="" class="small-box-footer">More info <i
+                            <a href="{{ route('messages.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                             <div class="icon">
                                 <i class="fa-solid fa-star"></i>
                             </div>
-                            <a href="#table patients" class="small-box-footer">More info <i
+                            <a href="{{ route('reviews.index') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

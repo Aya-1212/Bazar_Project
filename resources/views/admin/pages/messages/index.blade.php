@@ -38,8 +38,9 @@
                                             <th style="width: 10%; text-align: center; padding: 10px;">#</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Name</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Email</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Subject</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Content</th>
+                                            <th style="width: 20%; text-align: center; padding: 10px;">Subject</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">User Id</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                          
                                         </tr>
@@ -61,7 +62,7 @@
                                           
 
                                             </td>
-                                           
+                                           <td></td>
                
                                            
                                                 <td style="text-align: center;">

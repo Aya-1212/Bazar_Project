@@ -38,8 +38,8 @@
                                             <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Title</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
+                                            <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,19 +55,20 @@
                                                 <img src="img" alt="=category" class="img-fluid " height="100"
                                                     width="120">
                                             </td>
-                                            <td style="text-align: center;">
-                                                <form action="" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('DELETE') --}}
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
+                                            
                                             <td style="text-align: center;">
                                                 
                                                 <form action="#" method="POST">
                                                     {{-- @csrf --}}
                                                     {{-- @method('GET') --}}
                                                     <button class="btn btn-success">Edit</button>
+                                                </form>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <form action="" method="POST">
+                                                    {{-- @csrf --}}
+                                                    {{-- @method('DELETE') --}}
+                                                    <button class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>

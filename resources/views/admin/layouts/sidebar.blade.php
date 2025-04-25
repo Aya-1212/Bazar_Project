@@ -1,17 +1,17 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #003366;">
     <!-- Brand Logo -->
-    <a href="{{ "Home" }}" class="brand-link">
+    <a href="{{ url('/admin/home') }}" class="brand-link">
         <img src="{{  asset('admin/images') }}/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Vcare</span>
+        <span class="brand-text font-weight-light"></span>
     </a>
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{  asset('admin/images') }}/doctor.gif" class="img-circle elevation-2" alt="User Image">
+                <img src="{{  asset('admin/images') }}/admin.gif" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin Name</a>
+                <a href="#" class="d-block">Admin</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -27,8 +27,30 @@
                 </li>
                 <!-- -- dropDown---->
                 <li class="nav-item">
+                    <a href="{{ route('books.index') }}" class="nav-link">
+                    <img src="{{  asset('admin/images') }}/book.gif" alt="books" style="width: 20px; height: 20px;" />
+
+                        <p>Books</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('books.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Table</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('books.add') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/books.gif" alt="Dashboard" style="width: 20px; height: 20px;" />
+                    <img src="{{  asset('admin/images') }}/books.gif" alt="categories" style="width: 20px; height: 20px;" />
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>
@@ -51,7 +73,40 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/publisher.gif" alt="patients" style="width: 20px; height: 20px;" />
+                    <img src="{{  asset('admin/images') }}/message.gif" alt="messages" style="width: 20px; height: 20px;" />
+                        <p>Messages</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('messages.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Table</p>
+                            </a>
+                        </li>
+                      
+                   </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <img src="{{  asset('admin/images') }}/order.gif" alt="orders" style="width: 20px; height: 20px;" />
+
+                        <p>Orders</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('orders.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Table</p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <img src="{{  asset('admin/images') }}/publisher.gif" alt="publishers" style="width: 20px; height: 20px;" />
                         <p>Publishers</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
@@ -70,54 +125,49 @@
                         </li>
                     </ul>
                 </li>
+              
+              
+            
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/order.gif" alt="majors" style="width: 20px; height: 20px;" />
-
-                        <p>Orders</p>
+                    <img src="{{  asset('admin/images') }}/review.gif" alt="review" style="width: 20px; height: 20px;" />
+                        <p>Reviews</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('orders.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Table</p>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('books.index') }}" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/book.gif" alt="appointments" style="width: 20px; height: 20px;" />
-
-                        <p>Books</p>
-                        <i class="fas fa-angle-left right"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('books.index') }}" class="nav-link">
+                            <a href="{{ route('reviews.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Table</p>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <img src="{{  asset('admin/images') }}/message.gif" alt="appointments" style="width: 20px; height: 20px;" />
-                        <p>Messages</p>
-                        <i class="fas fa-angle-left right"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
+                    </li>
                         <li class="nav-item">
-                            <a href="{{ route('messages.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Table</p>
+                            <a href="{{ route('users.index') }}" class="nav-link">
+                            <img src="{{  asset('admin/images') }}/users.gif" alt="users" style="width: 20px; height: 20px;" />
+        
+                                <p>Users</p>
+                                <i class="fas fa-angle-left right"></i>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Table</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('users.add') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                  +  </ul>
+                   </ul>
                 </li>
+             
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
