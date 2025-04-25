@@ -30,7 +30,7 @@
                     <a href="#" class="nav-link">
                     <img src="{{  asset('admin/images') }}/healthcare.gif" alt="Dashboard" style="width: 20px; height: 20px;" />
                         <p>
-                            Doctors
+                            Categories
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
