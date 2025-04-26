@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'All Category')
+@section('title', 'All Publishers')
 
 @section('content')
     <div class="content-wrapper">
@@ -15,29 +15,29 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!-- Majors -->
+        <!-- Publishers -->
         <section class="content">
             <div class="container-fluid">
-                {{-- <x-success />
-                <x-error /> --}}
+                <x-success-state/>
+               <x-error-state/>
                 <div class="row">
+
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-center" style="font-size: 1.5em;">Publishers</h3>
-                            </div>
+                           
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                @if (empty($publishers->items()))
-                                   <x-success-state>{{ "Publisher" }}</x-success-state> 
+                                   <x-empty-state>{{ "Publisher" }}</x-empty-state> 
                                 @else 
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
                                     <thead>
                                         <tr>
                                             <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Title</th>
-                                            <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
+                                            <th style="width: 20%; text-align: center; padding: 10px;">Name</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">Phone</th>
+                                            <th style="width: 30%; text-align: center; padding: 10px;">Email</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                         </tr>
@@ -50,28 +50,24 @@
                                                {{ $loop->iteration }} 
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{ $publisher->title }} 
+                                                {{ $publisher->name }} 
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $publisher->phone }} 
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $publisher->email }} 
                                             </td>
                                             <td style="text-align: center;">
-                                                <img src="img" alt="=category" class="img-fluid " height="100"
-                                                    width="120">
-                                            </td>
-                                            
-                                            <td style="text-align: center;">
-                                               
-                                                <form action="{{ route("publishers.edit", $publisher) }}" method="GET">
-                                                    @csrf 
-                                            
-                                                    <button class="btn btn-success">Edit</button>
-                                                </form>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <form action="" method="GET">
-                                                    @csrf 
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
+                                                <a class="btn btn-success" href="{{ route('publishers.edit',$publisher->id) }}">Edit</a>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <form action="{{ route('publishers.destroy',$publisher->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                         </tr>
                                         @endforeach 
                                     </tbody>
@@ -83,10 +79,10 @@
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $majors->links() }} --}}
+                {{ $publishers->links() }} 
             </div>
         </section>
-        <!-- end majors -->
+        <!-- end publishers -->
 
     </div>
 @endsection

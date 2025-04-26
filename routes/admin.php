@@ -38,7 +38,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/publishers', [PublisherController::class, 'index'])->name('publishers.index');
     Route::get('/publishers/add', [PublisherController::class, 'add'])->name('publishers.add');
     Route::get('/publishers/{publisher}', [PublisherController::class, 'edit'])->name('publishers.edit');
-
+    Route::post('/publishers',[PublisherController::class,'store'])->name('publishers.store');
+    Route::get('/publishers/{publisher}', [PublisherController::class, 'edit'])->name('publishers.edit');
+    Route::put('/publishers/{publisher}', [PublisherController::class, 'update'])->name('publishers.update');
+    Route::delete('/publishers/{publisher}', [PublisherController::class,'destroy'])->name('publishers.destroy');
+   
     // Messages
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     // Orders

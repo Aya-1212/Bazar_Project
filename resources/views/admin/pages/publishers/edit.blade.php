@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'Edit Category')
+@section('title', 'Edit Publisher')
 
 
 @section('content')
@@ -13,35 +13,38 @@
                     <h1 class="font-weight-bold text-center" style="font-size: 2em; color: #007bff;">
                         Edit Publisher
                     </h1>
-                    <x-success />
-                    <form class="form border p-3" method="POST" action=""
+                    <x-success-state />
+                    <form class="form border p-3" method="POST" action="{{ route('publishers.update', $publisher->id) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        {{-- @method('PUT') --}}
+                        @method('PUT') 
                         <div class="mb-3">
                             <label for="">Name</label>
-                            <input type="text" name="title" value="" class="form-control" required>
-                            {{-- @error('title') --}}
-                                <span class="text-danger">scsauigL</span>
-                            {{-- @enderror --}}
+                            <input type="text" name="name" value="{{ $publisher->name }}" class="form-control" required>
+                            @error('name') 
+                                <span class="text-danger">{{ $message }}</span>
+                           @enderror 
                         </div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <img src="" alt="major" class="img-fluid "
-                                    height="200" width="200">
-                            </div>
-                            <div class="mb-3">
-                                <label for="image">Upload Image</label>
-                                <input type="file" name="image" value="" class="form-control">
-                                {{-- @error('image') --}}
-                                    <span class="text-danger">DAhgljdca</span>
-                                {{-- @enderror --}}
-                            </div>
+                        <div class="mb-3">
+                            <label for="">Phone</label>
+                            <input type="text" name="phone" value="{{ $publisher->phone }}" class="form-control" required>
+                            @error('phone') 
+                                <span class="text-danger">{{ $message }}</span>
+                           @enderror 
                         </div>
-
+                        <div class="mb-3">
+                            <label for="">Email</label>
+                            <input type="text" name="email" value="{{ $publisher->email }}" class="form-control" required>
+                            @error('email') 
+                                <span class="text-danger">{{ $message }}</span>
+                           @enderror 
+                        </div>
                         <div class="mb-3">
                             <input type="submit" value="Update" class="form-control text-white bg-success">
                         </div>
+                        </div>
+
+                        
                     </form>
 
                 </div>

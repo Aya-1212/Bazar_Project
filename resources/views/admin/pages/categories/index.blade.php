@@ -15,11 +15,11 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!-- Majors -->
+        <!-- Categories -->
         <section class="content">
             <div class="container-fluid">
                <x-success-state/>
-               <x-failed-state/>
+               <x-error-state/>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -79,7 +79,7 @@
                 {{ $categories->links() }}
             </div>
         </section>
-        <!-- end majors -->
+        <!-- end categories -->
 
     </div>
 @endsection
