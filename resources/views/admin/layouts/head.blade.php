@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('site/images/logo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/book.png') }}">
 
     <title>Dashboard || @yield('title')</title>
 

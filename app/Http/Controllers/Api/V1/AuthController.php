@@ -87,7 +87,10 @@ class AuthController extends ApiController
     if ($validated->fails()) {
       return $this->apiResponse(error:$validated->errors(), status:422, message:'Sign in failed');
     }
-    if (Auth::attempt($request->all())) {
+    if (Auth::attempt([
+      'email' -> $request->input('email'),
+      'password' -> $request->input('password')
+    ])) {
       $user = User::where('email', $request->email)->first();
       $token = $user->createToken('token_name')->plainTextToken;
       return $this->apiResponse(data: [ 
