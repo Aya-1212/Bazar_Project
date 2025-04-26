@@ -18,24 +18,24 @@
         <!-- Majors -->
         <section class="content">
             <div class="container-fluid">
-                {{-- <x-success />
-                <x-error /> --}}
+               <x-success-state/>
+               <x-failed-state/>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+                            <div class="card-body p-0">
+                                @if (empty($categories->items()))
+                                   <x-empty-state>{{ 'Categories' }}</x-empty-state>
+                               @else
                             <div class="card-header">
                                 <h3 class="card-title text-center" style="font-size: 1.5em;">Categories</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                {{-- @if (empty($majors->items()))
-                                    <x-empty-state>{{ 'Majors' }}</x-empty-state> --}}
-                                {{-- @else --}}
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
                                     <thead>
                                         <tr>
-                                            <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
+                                            <th style="width: 10%; text-align: center; padding: 10px;">#</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Title</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
                                             <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
@@ -43,45 +43,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($majors as $major) --}}
+                                        @foreach ($categories as $category)
                                         <tr>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $loop->iteration }} --}}
+                                                {{ $loop->iteration }}
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $major->title }} --}}
+                                                {{ $category->title }}
                                             </td>
                                             <td style="text-align: center;">
-                                                <img src="img" alt="=category" class="img-fluid " height="100"
+                                                <img src="{{ asset('upload/categories') ."/" . $category->image }}" alt="=category" class="img-fluid " height="100"
                                                     width="120">
                                             </td>
-                                            
                                             <td style="text-align: center;">
-                                                <form action="#" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('GET') --}}
-                                                    <button class="btn btn-success">Edit</button>
-                                                </form>
+                                                        <a class="btn btn-success" href="{{ route('categories.edit',$category->id) }}">Edit</a>
                                             </td>
                                             <td style="text-align: center;">
-                                                <form action="" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('DELETE') --}}
+                                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
                                                     <button class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $majors->links() }} --}}
+                {{ $categories->links() }}
             </div>
         </section>
         <!-- end majors -->

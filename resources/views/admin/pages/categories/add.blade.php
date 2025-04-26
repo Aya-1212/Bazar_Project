@@ -13,22 +13,22 @@
                     <h1 class="font-weight-bold text-center" style="font-size: 2em; color: #007bff;">
                         Add Category
                     </h1>
-                    {{-- <x-success/> --}}
-                    <form class="form border p-3" method="" action="" enctype="multipart/form-data">
+                    <x-success-state />
+                    <form class="form border p-3" method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Category Name</label>
                             <input type="text" value="" name="title" class="form-control">
-                            {{-- @error('title') --}}
-                                <span class="text-danger">sakgkas</span>
-                            {{-- @enderror --}}
+                            @error('title')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Image</label>
                             <input type="file" value="" name="image" class="form-control">
-                            {{-- @error('image') --}}
-                                <span class="text-danger">dsjBGDKL</span>
-                            {{-- @enderror --}}
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <input type="submit" value="Add" class="form-control text-white bg-success">
