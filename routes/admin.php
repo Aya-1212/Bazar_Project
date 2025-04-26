@@ -52,3 +52,4 @@ Route::prefix('/admin')->group(function () {
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
 });
+require __DIR__.'/auth.php';

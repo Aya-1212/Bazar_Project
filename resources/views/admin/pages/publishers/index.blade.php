@@ -28,9 +28,9 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                {{-- @if (empty($majors->items()))
-                                    <x-empty-state>{{ 'Majors' }}</x-empty-state> --}}
-                                {{-- @else --}}
+                               @if (empty($publishers->items()))
+                                   <x-success-state>{{ "Publisher" }}</x-success-state> 
+                                @else 
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
                                     <thead>
@@ -43,13 +43,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($majors as $major) --}}
+                                        @foreach ($publishers as $publisher) 
+
                                         <tr>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $loop->iteration }} --}}
+                                               {{ $loop->iteration }} 
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $major->title }} --}}
+                                                {{ $publisher->title }} 
                                             </td>
                                             <td style="text-align: center;">
                                                 <img src="img" alt="=category" class="img-fluid " height="100"
@@ -57,25 +58,25 @@
                                             </td>
                                             
                                             <td style="text-align: center;">
-                                                
-                                                <form action="#" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('GET') --}}
+                                               
+                                                <form action="{{ route("publishers.edit", $publisher) }}" method="GET">
+                                                    @csrf 
+                                            
                                                     <button class="btn btn-success">Edit</button>
                                                 </form>
                                             </td>
                                             <td style="text-align: center;">
-                                                <form action="" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('DELETE') --}}
+                                                <form action="" method="GET">
+                                                    @csrf 
+                                                    @method('DELETE')
                                                     <button class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach 
                                     </tbody>
                                 </table>
-                                {{-- @endif --}}
+                               @endif 
                             </div>
                             <!-- /.card-body -->
                         </div>
