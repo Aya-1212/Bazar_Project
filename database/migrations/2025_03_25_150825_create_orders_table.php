@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('status',['pending','processed','shipped','completed'])->default('pending');
             $table->enum('payment_method',['COD'])->default('COD');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('review_id')->constrained('reviews')->onDelete('cascade');
+            $table->foreignId('review_id')->constrained('reviews')->onDelete('cascade')->nullable();
             $table->timestamps();
 
         });

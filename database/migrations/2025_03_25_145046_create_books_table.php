@@ -18,8 +18,8 @@ return new class extends Migration
             $table->mediumText('description');
             $table->string('author');
             $table->decimal('price',8,2);
-            $table->string('discount');
-            $table->decimal('price_after_discount',8,2);
+            $table->string('discount')->nullable();
+            $table->decimal('price_after_discount',8,2)->nullable();
             $table->integer('stock_quantity');
             $table->foreignId('category_id')->constrained('categories')->onDelete('restrict');
             $table->foreignId('publisher_id')->constrained('publishers')->onDelete('restrict');

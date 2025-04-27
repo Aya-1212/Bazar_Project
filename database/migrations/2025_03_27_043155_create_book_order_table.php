@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('book_order', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer("qauntity");
+            $table->integer("qauntity")->default(1);
             $table->decimal("sub_total", 8, 2);
             $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');

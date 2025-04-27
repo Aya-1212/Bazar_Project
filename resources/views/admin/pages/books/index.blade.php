@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'All Category')
+@section('title', 'All Books')
 
 @section('content')
     <div class="content-wrapper">
@@ -15,22 +15,20 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!-- Majors -->
+        <!-- Books -->
         <section class="content">
             <div class="container-fluid">
-                {{-- <x-success />
-                <x-error /> --}}
+                <x-success-state/>
+               <x-error-state/>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-center" style="font-size: 1.5em;">Books</h3>
-                            </div>
+                           
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                {{-- @if (empty($majors->items()))
-                                    <x-empty-state>{{ 'Majors' }}</x-empty-state> --}}
-                                {{-- @else --}}
+                                @if (empty($books->items()))
+                                   <x-empty-state>{{ 'Books' }}</x-empty-state>
+                               @else
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
                                     <thead>
@@ -51,55 +49,67 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($majors as $major) --}}
+                                        @foreach ($books as $book) 
                                         <tr>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $loop->iteration }} --}}
+                                                {{ $loop->iteration }} 
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $major->title }} --}}
+                                                {{ $book->title }}
                                             </td>
                                             <td style="text-align: center;">
-                                                <img src="img" alt="=category" class="img-fluid " height="100"
+                                                <img src="{{ asset('upload/books') ."/" . $book->image }}" alt="=book" class="img-fluid " height="100"
                                                     width="120">
                                             </td>
-                                           <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align: center;">
-                                                <form action="#" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('GET') --}}
-                                                    <button class="btn btn-success">Edit</button>
-                                                </form>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->description }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->author }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->price }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->discount }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->price_after_discount }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->stock_quantity }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->category_id }}
+                                            </td>
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $book->publisher_id }}
                                             </td>
                                             <td style="text-align: center;">
-                                                <form action="" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('DELETE') --}}
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
+                                                <a class="btn btn-success" href="{{ route('books.edit',$book->id) }}">Edit</a>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <form action="{{ route('books.destroy',$book->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach 
                                     </tbody>
                                 </table>
-                                {{-- @endif --}}
+                               @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $majors->links() }} --}}
+                {{ $books->links() }} 
             </div>
         </section>
-        <!-- end majors -->
+        <!-- end books -->
 
     </div>
 @endsection

@@ -52,6 +52,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/books', [BookController::class, 'index'])->name('books.index');
     Route::get('/books/add', [BookController::class, 'add'])->name('books.add');
     Route::get('/books/{book}', [BookController::class, 'edit'])->name('books.edit');
+    Route::post('/books',[BookController::class,'store'])->name('books.store');
+    Route::get('/books/{book}', [BookController::class, 'edit'])->name('books.edit');
+    Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BookController::class,'destroy'])->name('books.destroy');
+   
     // Users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/add', [UserController::class, 'add'])->name('users.add');
