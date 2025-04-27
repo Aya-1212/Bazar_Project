@@ -43,7 +43,7 @@ class CategoryController extends Controller
             $category->image = $image_name;
          }
          $category->save();
-         return to_route('categories.index')->with('Success', 'Category Updated Successfully');
+         return to_route('categories.index')->with('success', 'Category Updated Successfully');
       }
       return to_route('categories.index')->with('errors', 'No such category');
    }
@@ -61,7 +61,7 @@ class CategoryController extends Controller
       $category->image = $image_name;
       $category->save();
 
-      return to_route('categories.add')->with('success', 'Category Added Successfully');
+      return to_route('categories.index')->with('success', 'Category Added Successfully');
    }
 
    public function destroy(Category $category)

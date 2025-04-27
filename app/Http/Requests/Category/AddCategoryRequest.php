@@ -22,7 +22,7 @@ class AddCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => "required|string|min:8|max:50",
+            'title' => "required|string|min:4|max:50",
             'image' => 'required|image',
         ];
     }
