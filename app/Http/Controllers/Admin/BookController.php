@@ -50,6 +50,7 @@ class BookController extends Controller
       $image_name = $this->uploadImage('books');
       $book = new Book();
       $book->title = $request->title;
+      $book->isbn_code = $request->isbn_code;
       $book->image = $image_name;
       $book->description = $request->description;
       $book->author = $request->author;
