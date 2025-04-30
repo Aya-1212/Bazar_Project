@@ -11,11 +11,12 @@
                     <div class="col-sm-12 text-center">
                         <h1 class="font-weight-bold" style="font-size: 2em; color: #007bff;">Users</h1>
                         <p class="font-weight-normal" style="font-size: 1.2em;">List of all Users</p>
+                        <a href="" class="btn btn-primary position-absolute" style="top: 0; right: 0;">Add User</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!-- Majors -->
+        <!-- users -->
         <section class="content">
             <div class="container-fluid">
                 {{-- <x-success />
@@ -28,8 +29,8 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                {{-- @if (empty($majors->items()))
-                                    <x-empty-state>{{ 'Majors' }}</x-empty-state> --}}
+                                {{-- @if (empty($users->items()))
+                                    <x-empty-state>{{ 'users' }}</x-empty-state> --}}
                                 {{-- @else --}}
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
@@ -47,13 +48,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($majors as $major) --}}
+                                        {{-- @foreach ($users as $user) --}}
                                         <tr>
                                             <td style="text-align: center; word-wrap: break-word;">
                                                 {{-- {{ $loop->iteration }} --}}
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $major->title }} --}}
+                                                {{-- {{ $user->title }} --}}
                                             </td>
                                             <td style="text-align: center;">
                                                 <img src="img" alt="=category" class="img-fluid " height="100"
@@ -90,10 +91,10 @@
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $majors->links() }} --}}
+                {{-- {{ $users->links() }} --}}
             </div>
         </section>
-        <!-- end majors -->
+        <!-- end users -->
 
     </div>
 @endsection

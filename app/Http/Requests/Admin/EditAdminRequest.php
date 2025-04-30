@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Publisher;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddPublisherRequest extends FormRequest
+class EditAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,14 @@ class AddPublisherRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:20',
-            'phone' => 'required',
+        $rules = [
+            'name' => 'required|string|min:3|max:50',
             'email' => 'required|email',
         ];
+        if($this->__isset('password') && $this->__isset('password_confirmation') ){
+        $rules['password'] = 'required|string|min:8|max:10|';
+        $rules['password_confirmation'] = 'required|same:password';
+        }
+        return $rules;
     }
 }

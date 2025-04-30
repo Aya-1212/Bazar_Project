@@ -11,6 +11,7 @@
                     <div class="col-sm-12 text-center">
                         <h1 class="font-weight-bold" style="font-size: 2em; color: #007bff;">Publishers</h1>
                         <p class="font-weight-normal" style="font-size: 1.2em;">List of all Registered Publishers</p>
+                        <a href="{{ route(name: 'admins.add') }}" class="btn btn-primary position-absolute" style="top: 0; right: 0;">Add Publisher</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->

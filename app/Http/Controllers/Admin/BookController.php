@@ -8,12 +8,11 @@ use App\Http\Requests\Book\EditBookRequest;
 use App\Http\Traits\FileSystem;
 use App\Models\Book;
 use Exception;
-use Illuminate\Auth\Events\Validated;
-use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
     use FileSystem;
+
     public function index(){
         $books = Book::paginate(10);
         return view('admin.pages.books.index', compact('books'));

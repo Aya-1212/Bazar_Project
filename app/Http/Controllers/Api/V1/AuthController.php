@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends ApiController
 {
@@ -88,8 +86,8 @@ class AuthController extends ApiController
       return $this->apiResponse(error:$validated->errors(), status:422, message:'Sign in failed');
     }
     if (Auth::attempt([
-      'email' -> $request->input('email'),
-      'password' -> $request->input('password')
+      'email' => $request->input('email'),
+      'password' => $request->input('password')
     ])) {
       $user = User::where('email', $request->email)->first();
       $token = $user->createToken('token_name')->plainTextToken;

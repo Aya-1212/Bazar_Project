@@ -18,21 +18,21 @@
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label"> Name</label>
-                            <input type="text" value="" name="name" class="form-control">
+                            <input type="text" value="{{ old('name') }}" name="name" class="form-control">
                             @error('name') 
                                 <span class="text-danger">{{ $message }}</span>
                              @enderror 
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label"> phone</label>
-                            <input type="text" value="" name="phone" class="form-control">
+                            <input type="tel" value="{{ old('phone') }}" name="phone" class="form-control">
                             @error('phone') 
                                 <span class="text-danger">{{ $message }}</span>
                              @enderror 
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label"> Email</label>
-                            <input type="text" value="" name="email" class="form-control">
+                            <input type="email" value="{{ old('email') }}" name="email" class="form-control">
                             @error('email') 
                                 <span class="text-danger">{{ $message }}</span>
                              @enderror 
