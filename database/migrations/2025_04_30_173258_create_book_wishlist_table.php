@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_cart', function (Blueprint $table) {
+        Schema::create('book_wishlist', function (Blueprint $table) {
             $table->id();
-            $table->decimal('sub_amount',12,2);
-            $table->integer('quantity')->default(1);
             $table->timestamps();
-
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('book_wishlist');
     }
 };

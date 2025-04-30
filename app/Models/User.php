@@ -55,4 +55,12 @@ class User extends Authenticatable
     public function messages (){
         return $this->belongsToMany(Message::class);
     }
+
+    public function cart(){
+        return $this->belongsTo(Cart::class);
+    }
+
+    public function wishlist(){
+        return $this->belongsTo(Wishlist::class);
+    }
 }

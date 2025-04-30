@@ -22,7 +22,8 @@ class AddBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string||min:3|max:500',
+            'title' => 'required|string|min:3|max:500',
+            'isbn_code'=> 'required|string|min:12',
             'image' => 'required|image',
             'description' => 'required|string|max:5000|min:10',
             'author' => 'string|required|min:3|max:50',
@@ -31,8 +32,7 @@ class AddBookRequest extends FormRequest
             'price_after_discount' => 'nullable|numeric',
             'stock_quantity'=> 'required|integer',
             'category_id' => 'required|exists:categories,id',
-            'publisher_id' => 'required|exists:publishers,id',
- 
+            'publisher_id' => 'required|exists:publishers,id', 
         ];
     }
 }

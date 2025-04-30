@@ -31,4 +31,12 @@ class Book extends Model
             "sub_total"])->withTimeStamps();
         
     }
+
+    public function carts(){
+        return $this->belongsToMany(Cart::class);
+    }
+
+    public function wishlists(){
+        return $this->belongsToMany(Wishlist::class);
+    }
 }

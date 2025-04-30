@@ -24,6 +24,13 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="" class="form-label">ISBN</label>
+                            <input type="text" value="{{ old('isbn_code') }}" name="isbn_code" class="form-control">
+                            @error('isbn_code')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="" class="form-label">Image</label>
                             <input type="file" name="image" class="form-control">
                             @error('image')
