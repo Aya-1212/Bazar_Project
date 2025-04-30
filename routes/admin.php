@@ -106,5 +106,6 @@ Route::prefix('/dashboard')->group(function () {
     
     */
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::delete('/reviews/{review}', [ReviewController::class,'destroy'])->name('reviews.destroy');
 
 });
