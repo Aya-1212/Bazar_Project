@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\BookController;
 use App\Http\Controllers\Api\V1\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// Auth
 Route::post('/v1/sign-up', [AuthController::class, "signUp" ]);
 Route::post('/v1/sign-in', [AuthController::class, 'signIn']);
 
@@ -29,4 +31,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/v1/send-message',[MessageController::class,'store']);
 });
 
-
+ // Book 
+Route::get('/v1/books', [BookController::class,'index']);
+Route::get('/v1/books/{id}', [BookController::class,'show']);
+Route::get('/v1/categories/{id}/books', [BookController::class,'getByCategory']);
