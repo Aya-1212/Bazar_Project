@@ -25,7 +25,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Image</label>
-                            <input type="file" value="{{ old('image') }}" name="image" class="form-control">
+                            <input type="file" name="image" class="form-control">
                             @error('image')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -73,18 +73,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Category Id</label>
-                            <input type="text" value="{{ old('category_id') }}" name="category_id" class="form-control">
-                            @error('category_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <label for="">Categories</label>
+                            <select name="category_id">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label"> Publisher Id</label>
-                            <input type="text" value="{{ old('publisher_id') }}" name="publisher_id" class="form-control">
-                            @error('publisher_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <label for="">Publishers</label>
+                            <select name="publisher_id">
+                                @foreach ($publishers as $publisher)
+                                <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <input type="submit" value="Add" class="form-control text-white bg-success">

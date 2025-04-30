@@ -17,4 +17,8 @@ trait FileSystem
     public function deleteImage($path){
         Storage::disk('custom_disk')->delete($path);
     }
+
+    public function getImageUrl ($path){
+        return   Storage::disk('custom_disk')->url($path);
+       }
 }

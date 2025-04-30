@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Publisher\PublisherRequest;
+use App\Http\Requests\Publisher\AddPublisherRequest;
+use App\Http\Requests\Publisher\EditPublisherRequest;
 use App\Http\Traits\FileSystem;
 use App\Models\Book;
 use Exception;
@@ -24,7 +25,7 @@ class PublisherController extends Controller
     {
         return view('admin.pages.publishers.add');
     }
-    public function store(PublisherRequest $request)
+    public function store(AddPublisherRequest $request)
     {
         $publisher = new Publisher();
         $publisher->name = $request->name;
@@ -53,7 +54,7 @@ class PublisherController extends Controller
         }
 
     }
-    public function update(PublisherRequest $request, Publisher $publisher)
+    public function update(EditPublisherRequest $request, Publisher $publisher)
     {
         $publisher = Publisher::where('id', $publisher->id)->first();
         if ($publisher) {

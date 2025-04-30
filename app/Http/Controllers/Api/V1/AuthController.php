@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\UserResource;
+use App\Http\Traits\FileSystem;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends ApiController
 {
+  use FileSystem;
   public function signUp(Request $request)
   {
     $validated = Validator::make(
@@ -44,28 +46,29 @@ class AuthController extends ApiController
 
     );
     if ($validated->fails()) {
-      return $this->apiResponse(error:$validated->errors(), status:422, message:'Sign up failed');
+      return $this->apiResponse(error: $validated->errors(), status: 422, message: 'Sign up failed');
     }
 
-  
-        $user= User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'city' => null,
-        'address' => null,
-        'phone' => null,
-        "image"=> "http://127.0.0.1:8000/upload/user.jpeg",
-        "password" => Hash::make(request()->password)
+
+    $user = User::create([
+      'name' => $request->name,
+      'email' => $request->email,
+      'city' => null,
+      'address' => null,
+      'phone' => null,
+      "image" => 'users.jpeg',
+      "password" => Hash::make(request()->password)
 
     ]);
     $token = $user->createToken('token_name')->plainTextToken;
-    return $this->apiResponse(data: [ 
-      'user'=> new UserResource($user),
-      'token'=> $token,
-    ], message:'User registered successfully');
-    
+    return $this->apiResponse(data: [
+      'user' => new UserResource($user),
+      'token' => $token,
+    ], message: 'User registered successfully');
+
   }
-  public function signIn (Request $request){
+  public function signIn(Request $request)
+  {
     $validated = Validator::make(
       $request->all(),
       [
@@ -83,38 +86,39 @@ class AuthController extends ApiController
       ]
     );
     if ($validated->fails()) {
-      return $this->apiResponse(error:$validated->errors(), status:422, message:'Sign in failed');
+      return $this->apiResponse(error: $validated->errors(), status: 422, message: 'Sign in failed');
     }
-    if (Auth::attempt([
-      'email' => $request->input('email'),
-      'password' => $request->input('password')
-    ])) {
+    if (
+      Auth::attempt([
+        'email' => $request->email,
+        'password' => $request->password
+      ])
+    ) {
       $user = User::where('email', $request->email)->first();
       $token = $user->createToken('token_name')->plainTextToken;
-      return $this->apiResponse(data: [ 
-        'user'=> new UserResource($user),
-        'token'=> $token,
-      ], message:'Sign in Success');
-      
-         }
-   return  $this->apiResponse(error: [
-    'email' => 'Invalid Email or Incorrect Password',
-   ], status:422, message:'Sign in failed');
-}
-public function logout(Request $request)
-{
-    try {
-       
-    auth()->user()->currentAccessToken()->delete();
-        return $this->apiResponse( message:'Loged out Successfully');
-    } catch (\Exception $e) {
-      return $this->apiResponse( status:401, message:'Unathorized');
-    
+      return $this->apiResponse(data: [
+        'user' => new UserResource($user),
+        'token' => $token,
+      ], message: 'Sign in Success');
+
     }
-}
+    return $this->apiResponse(error: [
+      'email' => 'Invalid Email or Incorrect Password',
+    ], status: 422, message: 'Sign in failed');
+  }
+  public function logout(Request $request)
+  {
+    try {
+      auth()->user()->currentAccessToken()->delete();
+      return $this->apiResponse(message: 'Loged out Successfully');
+    } catch (\Exception $e) {
+      return $this->apiResponse(status: 401, message: 'Unathorized');
+
+    }
+  }
 }
 
- 
+
 
 
 

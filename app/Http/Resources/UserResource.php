@@ -2,11 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Traits\FileSystem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
+    use FileSystem;
     /**
      * Transform the resource into an array.
      *
@@ -22,7 +24,7 @@ class UserResource extends JsonResource
             'city' => $this->city,
             'phone' => $this->phone,
             'password' => $this->password,
-            'image' => $this->image,
+            'image' => $this->getImageUrl('users/'.$this->image),
             
         ];
 
