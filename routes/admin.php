@@ -62,6 +62,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/users/add', [UserController::class, 'add'])->name('users.add');
     // Reviews
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::delete('/reviews/{review}', [ReviewController::class,'destroy'])->name('reviews.destroy');
 
 });
 require __DIR__.'/auth.php';

@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'All Category')
+@section('title', 'All Reviews')
 
 @section('content')
     <div class="content-wrapper">
@@ -15,22 +15,20 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!-- Majors -->
+        <!-- Reviews -->
         <section class="content">
             <div class="container-fluid">
-                {{-- <x-success />
-                <x-error /> --}}
+                <x-success-state />
+                <x-error-state /> 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-center" style="font-size: 1.5em;">Reviews</h3>
-                            </div>
+                           
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                {{-- @if (empty($majors->items()))
-                                    <x-empty-state>{{ 'Majors' }}</x-empty-state> --}}
-                                {{-- @else --}}
+                                @if (empty($reviews->items()))
+                                    <x-empty-state>{{ 'Reviews' }}</x-empty-state> 
+                                @else
                                 <table class="table table-sm table-bordered border-primary "
                                     style="width: 100%; border: 1px solid #ddd;">
                                     <thead>
@@ -39,57 +37,48 @@
                                             <th style="width: 20%; text-align: center; padding: 10px;">Rating</th>
                                             <th style="width: 30%; text-align: center; padding: 10px;">Comment</th> 
                                             <th style="width: 30%; text-align: center; padding: 10px;">User Id</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
+                                          
                                             <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($majors as $major) --}}
+                                       @foreach ($reviews as $review) 
                                         <tr>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $loop->iteration }} --}}
+                                                {{ $loop->iteration }} 
                                             </td>
                                             <td style="text-align: center; word-wrap: break-word;">
-                                                {{-- {{ $major->title }} --}}
+                                                {{ $major->rating }} 
                                             </td>
-                                            <td style="text-align: center;">
-                                                <img src="img" alt="=category" class="img-fluid " height="100"
-                                                    width="120">
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $major->comment }} 
                                             </td>
-                                           <td></td>
-                                           
-                                           <td style="text-align: center;">
-                                                
-                                            <form action="#" method="POST">
-                                                {{-- @csrf --}}
-                                                {{-- @method('GET') --}}
-                                                <button class="btn btn-success">Edit</button>
-                                            </form>
-                                        </td>
-                                          
+                                            <td style="text-align: center; word-wrap: break-word;">
+                                                {{ $major->user_id }} 
+                                            </td>
                                            
                                             <td style="text-align: center;">
                                                 <form action="" method="POST">
-                                                    {{-- @csrf --}}
-                                                    {{-- @method('DELETE') --}}
+                                                     @csrf 
+                                                  @method('DELETE') 
                                                     <button class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $majors->links() }} --}}
+               {{ $reviews->links() }} 
             </div>
         </section>
-        <!-- end majors -->
+        <!-- end reviews -->
 
     </div>
 @endsection
