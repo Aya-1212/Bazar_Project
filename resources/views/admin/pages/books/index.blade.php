@@ -35,21 +35,22 @@
                                         style="width: 100%; border: 1px solid #ddd;">
                                         <thead>
                                             <tr>
-                                                <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
-                                                <th style="width: 20%; text-align: center; padding: 10px;">Title</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Description</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Author</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Price</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Discount</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Price After
+                                                <th style="text-align: center; padding: 10px;">Id</th>
+                                                <th style="width: 30%;width: 30%; text-align: center; padding: 10px;">Title</th>
+                                                <th style="text-align: center; padding: 10px;">Image</th>
+                                                <th style="width: 40%; text-align: center; padding: 10px;">Description</th>
+                                                <th style="text-align: center; padding: 10px;">Author</th>
+                                                <th style="width: 10%;text-align: center; padding: 10px;">Price</th>
+                                                <th style="width: 10%;text-align: center; padding: 10px;">Discount</th>
+                                                <th style="text-align: center; padding: 10px;">Price After
                                                     Discount</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Stock Quantity
+                                                <th style="width: 10%;text-align: center; padding: 10px;">Stock Quantity
                                                 </th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Category Id</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Publisher Id</th>
-                                                <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
-                                                <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
+                                                <th style="text-align: center; padding: 10px;">ISBN</th>
+                                                <th style="text-align: center; padding: 10px;">Category Id</th>
+                                                <th style="text-align: center; padding: 10px;">Publisher Id</th>
+                                                <th style="text-align: center; padding: 10px;">Edit</th>
+                                                <th style="text-align: center; padding: 10px;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,13 +73,13 @@
                                                         {{ $book->author }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->price }}
+                                                        {{ $book->price }} $
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->discount }}
+                                                        {{ $book->discount }} %
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->price_after_discount }}
+                                                        {{ $book->price_after_discount }} $
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->stock_quantity }}
@@ -89,6 +90,7 @@
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->publisher_id }}
                                                     </td>
+                                                <th style="text-align: center; padding: 10px;">{{ $book->isbn_code }}</th>
                                                     <td style="text-align: center;">
                                                         <a class="btn btn-success"
                                                             href="{{ route('books.edit', $book->id) }}">Edit</a>
