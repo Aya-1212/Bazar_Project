@@ -18,7 +18,7 @@ class BookController extends ApiController
         "meta" => [
                     "total" => $books->total(),
                     "per_page" => $books->perPage(),
-                    "cuurent_page" => $books->currentPage(),
+                    "current_page" => $books->currentPage(),
                     "last_page" => $books->lastPage(),
                 ],
                 "links" => [
@@ -56,7 +56,7 @@ class BookController extends ApiController
         "meta" => [
                     "total" => $books->total(),
                     "per_page" => $books->perPage(),
-                    "cuurent_page" => $books->currentPage(),
+                    "current_page" => $books->currentPage(),
                     "last_page" => $books->lastPage(),
                 ],
                 "links" => [
@@ -77,4 +77,40 @@ class BookController extends ApiController
 
             
    }
-}
+   public function search (Request $request){
+    $query = trim($request->query('title'));
+
+    if (empty($query)) {
+        return $this->apiResponse(message: 'Search query is empty.', status: 400);
+    }
+
+          $books = Book::where('title','like','%'.$query.'%')
+          ->orWhere('author','like','%'.$query.'%')
+          ->paginate('10');
+          if ($books->isEmpty()) {
+            return $this->apiResponse(
+                message: 'No books found matching your search.', status: 201);
+          }
+                
+    
+          return $this->apiResponse([
+            'books' => BookResource::collection( $books ),
+            "meta" => [
+                        "total" => $books->total(),
+                        "per_page" => $books->perPage(),
+                        "current_page" => $books->currentPage(),
+                        "last_page" => $books->lastPage(),
+                    ],
+                    "links" => [
+                        "first" => $books->url(1),
+                        "last" => $books->url($books->lastPage()),
+                        "prev" => $books->previousPageUrl(),
+                        "next" => $books->nextPageUrl(),
+                    ],
+            
+         ]
+       , message:"Book Returned Successfully" );
+       
+    }
+   }
+
