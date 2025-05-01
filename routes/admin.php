@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('dashboard')->name('admin.')->group(function () {
-    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('signin');
-    Route::post('/sign-in', [AuthController::class, 'submitSignIn'])->name('signin.submit');
+Route::prefix('dashboard')->group(function () {
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('admin.signin');
+    Route::post('/sign-in', [AuthController::class, 'submitSignIn'])->name('admin.signin.submit');
 });
 
-Route::prefix('/dashboard')->group(function () {
+Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
 
 
     /* 
@@ -115,6 +115,7 @@ Route::prefix('/dashboard')->group(function () {
     */
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/add', [UserController::class, 'add'])->name('users.add');
+    Route::post('/users',[UserController::class,'store'])->name('users.store');
     Route::delete('/users' , [UserController::class, 'destroy'])->name('users.destroy');
 
 

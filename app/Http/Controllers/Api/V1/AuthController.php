@@ -56,7 +56,7 @@ class AuthController extends ApiController
       'city' => null,
       'address' => null,
       'phone' => null,
-      "image" => 'users.jpeg',
+      "image" => 'user.jpeg',
       "password" => Hash::make(request()->password)
 
     ]);
