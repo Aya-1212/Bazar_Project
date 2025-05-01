@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BookController;
 use App\Http\Controllers\Api\V1\MessageController;
+use App\Http\Controllers\Api\V1\PublisherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,10 @@ Route::middleware('auth:sanctum')->group(function(){
 Route::get('/v1/books', [BookController::class,'index']);
 Route::get('/v1/books/{id}', [BookController::class,'show']);
 Route::get('/v1/categories/{id}/books', [BookController::class,'getByCategory']);
-Route::get('/v1/books/search', [BookController::class,'search']);
+Route::get('/v1/books-search', [BookController::class,'search']);
+Route::get('/v1/books-sale', [BookController::class,'sale']);
+Route::get('/v1/books-filter', [BookController::class,'filter']);
+Route::get('/v1/publishers/{id}/books', [BookController::class,'getByPublisher']);
+
+// Publisher 
+Route::get('/v1/publishers', [PublisherController::class,'index']);

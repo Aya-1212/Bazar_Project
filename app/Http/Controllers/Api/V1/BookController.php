@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class BookController extends ApiController
@@ -112,5 +113,87 @@ class BookController extends ApiController
        , message:"Book Returned Successfully" );
        
     }
-   }
+  public function sale(){
+   $books = Book::where('discount', '>=', 40)->paginate('10');
+     return $this->apiResponse([
+        'books' => BookResource::collection( $books ),
+        "meta" => [
+                    "total" => $books->total(),
+                    "per_page" => $books->perPage(),
+                    "current_page" => $books->currentPage(),
+                    "last_page" => $books->lastPage(),
+                ],
+                "links" => [
+                    "first" => $books->url(1),
+                    "last" => $books->url($books->lastPage()),
+                    "prev" => $books->previousPageUrl(),
+                    "next" => $books->nextPageUrl(),
+                ],
+        
+     ]
+   , message:"Books Returned Successfully"
+    );
+  }
+  public function filter(Request $request){
+    $query = trim($request->query('price'));
 
+    if (empty($query)) {
+        return $this->apiResponse(message: 'Search query is empty.', status: 400);
+    }
+
+          $books = Book::where('price','>=', $query)
+          ->paginate('10');
+          if ($books->isEmpty()) {
+            return $this->apiResponse(
+                message: 'No books are founded.', status: 201);
+          }
+                
+    
+          return $this->apiResponse([
+            'books' => BookResource::collection( $books ),
+            "meta" => [
+                        "total" => $books->total(),
+                        "per_page" => $books->perPage(),
+                        "current_page" => $books->currentPage(),
+                        "last_page" => $books->lastPage(),
+                    ],
+                    "links" => [
+                        "first" => $books->url(1),
+                        "last" => $books->url($books->lastPage()),
+                        "prev" => $books->previousPageUrl(),
+                        "next" => $books->nextPageUrl(),
+                    ],
+            
+         ]
+       , message:"Books Returned Successfully" );
+  }
+  public function getByPublisher($id){
+    try {
+    $publisher = Publisher::findOrFail($id);
+    $books = Book::where("publisher_id", $id)->paginate('10');
+    return $this->apiResponse([
+        'books' => BookResource::collection( $books ),
+        "meta" => [
+                    "total" => $books->total(),
+                    "per_page" => $books->perPage(),
+                    "current_page" => $books->currentPage(),
+                    "last_page" => $books->lastPage(),
+                ],
+                "links" => [
+                    "first" => $books->url(1),
+                    "last" => $books->url($books->lastPage()),
+                    "prev" => $books->previousPageUrl(),
+                    "next" => $books->nextPageUrl(),
+                ],
+        
+     ]
+   , message:"Book Returned Successfully"
+    );
+}
+   catch (\Exception $e){
+    return $this->apiResponse(message:"Publisher Not Found", status:404);
+}
+
+  }
+   
+}
