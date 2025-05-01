@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BookController;
+use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MessageController;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +38,5 @@ Route::get('/v1/books', [BookController::class,'index']);
 Route::get('/v1/books/{id}', [BookController::class,'show']);
 Route::get('/v1/categories/{id}/books', [BookController::class,'getByCategory']);
 Route::get('/v1/books/search', [BookController::class,'search']);
+Route::get('/v1/book-slider',[BookController::class,'getSlider']);
+Route::get('/v1/categories',[CategoryController::class,'index']);
