@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class BookController extends ApiController
 {
+    
     public function index()
     {
         $books = Book::paginate('10');
@@ -35,7 +36,9 @@ class BookController extends ApiController
             message: "Book Returned Successfully"
         );
 
+
     }
+    
     public function show($id)
     {
         try {
@@ -118,7 +121,7 @@ class BookController extends ApiController
              ]
            , message:"Book Returned Successfully" );
            
-        }
+    }
 
     public function sale()
     {
@@ -152,6 +155,7 @@ class BookController extends ApiController
             'slider' => BookResource::collection($books),
         ], message: 'Books Returned Successfully');
     }
+    
     public function filter(Request $request)
     {
         $query = trim($request->query('price'));
@@ -191,6 +195,7 @@ class BookController extends ApiController
             message: "Books Returned Successfully"
         );
     }
+    
     public function getByPublisher($id)
     {
         try {

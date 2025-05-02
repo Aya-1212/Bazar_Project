@@ -33,7 +33,7 @@ class AddUserRequest extends FormRequest
             'password_confirmation' => 'required|same:password',
             'city' => 'nullable|min:5|max:40|string',
             'address' => 'nullable|min:6|max:40|string',
-            'phone' => 'nullable|regex:/^01[0125][0-9]{8}$/'
+            'phone' => 'nullable|regex:/^01[0125][0-9]{8}$/|unique:users,phone'
         ];
         if ($this->__isset('image')) {
             $rules['image'] = 'required|image';

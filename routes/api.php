@@ -4,9 +4,9 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BookController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MessageController;
-use App\Models\Category;
 
 use App\Http\Controllers\Api\V1\PublisherController;
+use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,15 +24,24 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Auth
-Route::post('/v1/sign-up', [AuthController::class, "signUp" ]);
-Route::post('/v1/sign-in', [AuthController::class, 'signIn']);
+    // Auth
+    Route::post('/v1/sign-up', [AuthController::class, "signUp" ]);
+    Route::post('/v1/sign-in', [AuthController::class, 'signIn']);
 
-Route::middleware('auth:sanctum')->group(function(){
-    // Logout
-    Route::post('/v1/logout', [AuthController::class, 'logout']);
+
+    Route::middleware('auth:sanctum')->prefix('v1')->group(function(){
+    
+        // Logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
     // Store Message
-    Route::post('/v1/send-message',[MessageController::class,'store']);
+    Route::post('/send-message',[MessageController::class,'store']);
+    
+    // Profile
+    Route::get('/profile',[UserController::class,'showProfile']);
+    Route::post('/update-profile',[UserController::class,'updateProfile']);
+    Route::post('/update-password',[UserController::class,'updatePassword']);
+    Route::post('/delete-profile',[UserController::class,'deleteUser']);
 });
 
  // Book 
