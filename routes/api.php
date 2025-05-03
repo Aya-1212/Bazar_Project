@@ -50,6 +50,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/remove-from-wishlist',[WishlistController::class,'removeFromWishlist']);
     // Cart
     Route::post('/add-to-cart',[CartController::class,'addToCart']);
+    Route::post('/update-cart',[CartController::class,'updateQuantity']);
+    Route::get('/show-cart',[CartController::class,'showCart']);
+    Route::post('/remove-from-cart',[CartController::class,'removeFromCart']);
+
 });
 
  // Book 

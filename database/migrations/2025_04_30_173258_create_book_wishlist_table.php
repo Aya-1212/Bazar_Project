@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
             $table->foreignId('wishlist_id')->constrained()->onDelete('cascade');
+            $table->unique(['wishlist_id','book_id']);
             $table->timestamps();
         });
     }

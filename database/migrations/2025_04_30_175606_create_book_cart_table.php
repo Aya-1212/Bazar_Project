@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('book_cart', function (Blueprint $table) {
             $table->id();
-            $table->decimal('sub_amount', 12, 2);
-            $table->integer('quantity')->default(1);
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
             $table->foreignId('cart_id')->constrained()->onDelete('cascade');
+            $table->decimal('sub_amount', 12, 2)->default(0);
+            $table->integer('quantity')->default(1);
+            $table->unique(['cart_id','book_id']);
             $table->timestamps();
         });
     }
