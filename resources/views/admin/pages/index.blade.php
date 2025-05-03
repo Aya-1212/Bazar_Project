@@ -82,7 +82,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>1000</h3>
+                                <h3>{{ $orders }}</h3>
                                 <p>Orders</p>
                             </div>
                             <div class="icon">
@@ -111,7 +111,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>1000</h3>
+                                <h3>{{ $reviews }}</h3>
                                 <p>Reviews</p>
                             </div>
                             <div class="icon">

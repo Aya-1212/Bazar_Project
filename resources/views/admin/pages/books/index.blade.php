@@ -27,7 +27,7 @@
                         <div class="card">
 
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
+                            <div class="card-body p-0 table-responsive">
                                 @if (empty($books->items()))
                                     <x-empty-state>{{ 'Books' }}</x-empty-state>
                                 @else
@@ -67,7 +67,7 @@
                                                             alt="=book" class="img-fluid " height="100" width="120">
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->description }}
+                                                        {{ \Illuminate\Support\Str::limit($book->description, 150, '...') }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->author }}
@@ -76,21 +76,21 @@
                                                         {{ $book->price }} $
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->discount }} %
+                                                        {{ $book->discount  ?? 'N/A'  }}%
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->price_after_discount }} $
+                                                        {{ $book->price_after_discount  ?? 'N/A' }}$ 
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->stock_quantity }}
                                                     </td>
+                                                    <th style="text-align: center; padding: 10px;">{{ $book->isbn_code }}</th>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->category_id }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->publisher_id }}
                                                     </td>
-                                                <th style="text-align: center; padding: 10px;">{{ $book->isbn_code }}</th>
                                                     <td style="text-align: center;">
                                                         <a class="btn btn-success"
                                                             href="{{ route('books.edit', $book->id) }}">Edit</a>

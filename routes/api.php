@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     Route::middleware('auth:sanctum')->prefix('v1')->group(function(){
     
-        // Logout
+    // Logout
     Route::post('/logout', [AuthController::class, 'logout']);
     
     // Store Message

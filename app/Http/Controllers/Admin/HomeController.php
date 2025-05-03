@@ -7,7 +7,9 @@ use App\Models\Admin;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Message;
+use App\Models\Order;
 use App\Models\Publisher;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,8 +22,10 @@ class HomeController extends Controller
         $books = Book::count();
         $admins = Admin::count();
         $messages = Message::count();
+        $orders = Order::count();
+        $reviews = Review::count();
         return view('admin.pages.index',compact([
-            'users','categories','publishers','books','admins','messages'
+            'users','categories','publishers','books','admins','messages','orders','reviews'
         ]));
     }
 }

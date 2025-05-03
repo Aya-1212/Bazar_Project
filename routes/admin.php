@@ -129,3 +129,7 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
 
 
 });
+
+Route::get('/view',function (){
+    return view('admin.pages.orders.view');
+} );
