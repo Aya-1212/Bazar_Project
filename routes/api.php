@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\MessageController;
 
 use App\Http\Controllers\Api\V1\PublisherController;
 use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Controllers\Api\V1\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/update-profile',[UserController::class,'updateProfile']);
     Route::post('/update-password',[UserController::class,'updatePassword']);
     Route::post('/delete-profile',[UserController::class,'deleteUser']);
+    // Wishlist
+    Route::post('/add-to-wishlist',[WishlistController::class,'AddToWishlist']);
+    Route::get('/show-wishlist',[WishlistController::class,'showWishlist']);
+    Route::post('/remove-from-wishlist',[WishlistController::class,'removeFromWishlist']);
 });
 
  // Book 
@@ -59,3 +64,5 @@ Route::get('/v1/publishers/{id}/books', [BookController::class,'getByPublisher']
 
 // Publisher 
 Route::get('/v1/publishers', [PublisherController::class,'index']);
+
+
