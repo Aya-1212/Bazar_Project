@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'All Category')
+@section('title', 'All Orders')
 
 @section('content')
     <div class="content-wrapper">

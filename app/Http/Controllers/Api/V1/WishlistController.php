@@ -36,6 +36,7 @@ class WishlistController extends ApiController
        'user_id' => $user->id,
      ]
      );
+     
      if (!$wishlist->books()->where('book_id', $request->book_id)->exists()) {
         $wishlist->books()->attach($request->book_id);
     }

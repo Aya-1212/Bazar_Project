@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BookController;
+use App\Http\Controllers\Api\V1\CartController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MessageController;
 
@@ -47,6 +48,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/add-to-wishlist',[WishlistController::class,'AddToWishlist']);
     Route::get('/show-wishlist',[WishlistController::class,'showWishlist']);
     Route::post('/remove-from-wishlist',[WishlistController::class,'removeFromWishlist']);
+    // Cart
+    Route::post('/add-to-cart',[CartController::class,'addToCart']);
 });
 
  // Book 
