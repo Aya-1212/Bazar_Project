@@ -9,6 +9,7 @@ class Cart extends Model
 {
     protected $fillable  =[
     'totla_price',
+    'user_id',
     ];
     use HasFactory;
 
