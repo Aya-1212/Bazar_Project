@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\CartController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\MessageController;
 
+use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\PublisherController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\WishlistController;
@@ -53,6 +54,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/update-cart',[CartController::class,'updateQuantity']);
     Route::get('/show-cart',[CartController::class,'showCart']);
     Route::post('/remove-from-cart',[CartController::class,'removeFromCart']);
+
+    // Order
+    Route::get('/checkout',[OrderController::class,'checkout']);
+    Route::post('/place-order',[OrderController::class,'placeOrder']);
+    Route::get('/order-history',[OrderController::class,'orderHistory']);
+    Route::get('/show-single-order',[OrderController::class,'showSingleOrder']);
+    Route::post('/order-review', [OrderController::class, 'addOrderReview']);
 
 });
 

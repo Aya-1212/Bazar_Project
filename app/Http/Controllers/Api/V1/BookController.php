@@ -12,8 +12,21 @@ use Illuminate\Http\Request;
 class BookController extends ApiController
 {
     
-    public function index()
+    public function index(Request $request)
     {
+        $query = trim($request->query("limit"));
+        if ($query == 2) {
+            $books = Book::limit(2)->get();
+    
+            return $this->apiResponse(
+                [
+                    'books' => BookResource::collection($books),
+                    "meta" => null,
+                    "links" => null,
+                ],
+                message: "Book Returned Successfully"
+            );
+        }
         $books = Book::paginate('10');
         return $this->apiResponse(
             [
@@ -123,8 +136,21 @@ class BookController extends ApiController
            
     }
 
-    public function sale()
+    public function sale(Request $request)
     {
+        $query = trim($request->query("limit"));
+        if ($query == 2) {
+            $books = Book::where('discount', '>=', 40)->limit(2)->get();
+    
+            return $this->apiResponse(
+                [
+                    'books' => BookResource::collection($books),
+                    "meta" => null,
+                    "links" => null,
+                ],
+                message: "Book Returned Successfully"
+            );
+        }
         $books = Book::where('discount', '>=', 40)->paginate('10');
         return $this->apiResponse(
             [

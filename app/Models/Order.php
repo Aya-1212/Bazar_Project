@@ -11,6 +11,8 @@ class Order extends Model
         'total_amount',
         'payment_method',
         'status',
+        'user_id',
+        'review_id',
         ];
     use HasFactory;
     public function user (){
