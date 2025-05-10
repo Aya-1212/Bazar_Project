@@ -47,6 +47,7 @@ class CategoryController extends Controller
       }
       return to_route('categories.index')->with('errors', 'No such category');
    }
+   
 
    public function add()
    {

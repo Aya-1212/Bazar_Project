@@ -112,7 +112,6 @@ class CartController extends ApiController
         }
 
         $user = Auth::user();
-
         $cart = Cart::firstOrCreate(
             [
                 'user_id' => $user->id,
@@ -165,7 +164,8 @@ class CartController extends ApiController
                             'book_image' => $this->getImageUrl('/books' . "/" . $book->image),
                             'book_price' => number_format($book->price, 2),
                             'book_discount' => $book->discount ?? "",
-                            'book_price_after_discount' => number_format($book->price_after_discount ?? 0, 2),
+                            'book_price_after_discount' => number_format($book->price_after_discount ?? 0,
+                             2),
                             'book_stock_quatinty' => $book->stock_quantity,
                             'book_quantity' => $book->pivot->quantity,
                             'book_sub_amount' => number_format($book->pivot->sub_amount, 2),

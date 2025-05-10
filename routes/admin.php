@@ -47,7 +47,8 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
     Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
     Route::get('/admins/{admin}', [AdminController::class, 'edit'])->name('admins.edit');
     Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
-    Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
+    Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])
+    ->name('admins.destroy');
 
 
     /*
@@ -58,9 +59,12 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categories/add', [CategoryController::class, 'add'])->name('categories.add');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/categories/{category}', [CategoryController::class, 'edit'])
+    ->name('categories.edit');
+    Route::put('/categories/{category}', [CategoryController::class, 'update'])
+    ->name('categories.update');
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])
+    ->name('categories.destroy');
 
 
     /*

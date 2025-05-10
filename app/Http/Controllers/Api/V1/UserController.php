@@ -128,7 +128,6 @@ class UserController extends ApiController
                 status: 422,
             );
         }
-
         $user = Auth::user();
 
         if (!Hash::check($request->password, $user->password)) {
@@ -137,13 +136,11 @@ class UserController extends ApiController
                 status: 400,
             );
         }
-
         if($user->image != "user.jpeg"){
             $this->deleteImage('/users' . "/" . $user->image);
         }
 
         $user->delete();
-
         return $this->apiResponse(
             message: "Deleted Account Successfully.",
         );
