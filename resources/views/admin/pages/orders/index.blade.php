@@ -37,8 +37,10 @@
                                                 <th style="width: 30%; text-align: center; padding: 10px;">Total Amount</th>
                                                 <th style="width: 30%; text-align: center; padding: 10px;">Payment Method
                                                 </th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">User Id</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Review Id</th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">Created_At
+                                                </th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">User_Id</th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">Review_Id</th>
                                                 <th style="width: 30%; text-align: center; padding: 10px;">View</th>
                                                 <th style="width: 20%; text-align: center; padding: 10px;">Edit</th>
                                                 <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
@@ -54,33 +56,39 @@
                                                         {{ $order->status }}
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        {{ $order->total_amount }}
+                                                        {{ $order->total_amount . ' $' }}
                                                     </td>
                                                     <td style="text-align: center;">
                                                         {{ $order->payment_method }}
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        {{ $order->user->id }}
+                                                        {{ $order->created_at->format('Y-m-d H:i') }}
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        {{ $order->review->id }}
+                                                       <a href="{{ route('users.show', $order->user_id) }}">
+                                                         {{ $order->user->id }}
+                                                       </a>
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        <a href="" class="btn btn-info">View</a>
+                                                        @if ($order->review_id == null)
+                                                            {{ 'N/A' }}
+                                                        @else
+                                                            {{ $order->review->id }}
+                                                        @endif
                                                     </td>
                                                     <td style="text-align: center;">
-
-                                                        <form action="#" method="POST">
-                                                            {{-- @csrf --}}
-                                                            {{-- @method('GET') --}}
-                                                            <button class="btn btn-success">Edit</button>
-                                                        </form>
+                                                        <a href="{{ route('orders.show', $order->id) }}"
+                                                            class="btn btn-info">View</a>
                                                     </td>
-
                                                     <td style="text-align: center;">
-                                                        <form action="" method="POST">
-                                                            {{-- @csrf --}}
-                                                            {{-- @method('DELETE') --}}
+                                                        <a href="{{ route('orders.edit', $order->id) }}"
+                                                            class="btn btn-success">Edit</a>
+                                                    </td>
+                                                    <td style="text-align: center;">
+                                                        <form action="{{ route('orders.destroy', $order->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
                                                             <button class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
@@ -95,7 +103,7 @@
                         <!-- /.card -->
                     </div>
                 </div>
-                {{-- {{ $orders->links() }} --}}
+                {{ $orders->links() }}
             </div>
         </section>
         <!-- end orders -->

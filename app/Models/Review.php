@@ -7,15 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    protected $fillable  =[
-        'rating',
-        'comment',
+    protected $fillable =
+        [
+            'rating',
+            'comment',
         ];
+
     use HasFactory;
-    public function user (){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function order (){
-        return $this->belongsTo(Order::class);
+
+    public function order()
+    {
+        return $this->HasOne(Order::class, 'review_id', 'id');
     }
 }

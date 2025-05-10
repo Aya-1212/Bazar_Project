@@ -25,7 +25,6 @@ class UserController extends ApiController
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:50',
             'phone' => 'nullable|regex:/^01[0125][0-9]{8}$/',

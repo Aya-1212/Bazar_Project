@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\MessageController;
 
 use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\PublisherController;
+use App\Http\Controllers\Api\V1\ReviewController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\WishlistController;
 use Illuminate\Http\Request;
@@ -60,7 +61,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/place-order',[OrderController::class,'placeOrder']);
     Route::get('/order-history',[OrderController::class,'orderHistory']);
     Route::get('/show-single-order',[OrderController::class,'showSingleOrder']);
-    Route::post('/order-review', [OrderController::class, 'addOrderReview']);
+    // Review
+    Route::post('/order-review', [ReviewController::class, 'store']);
 
 });
 
@@ -69,7 +71,7 @@ Route::get('/v1/books', [BookController::class,'index']);
 Route::get('/v1/books/{id}', [BookController::class,'show']);
 Route::get('/v1/categories/{id}/books', [BookController::class,'getByCategory']);
 
-Route::get('/v1/books/search', [BookController::class,'search']);
+Route::get('/v1/books-search', [BookController::class,'search']);
 Route::get('/v1/book-slider',[BookController::class,'getSlider']);
 Route::get('/v1/categories',[CategoryController::class,'index']);
 

@@ -19,55 +19,63 @@
         <section class="content">
             <div class="container-fluid">
                 <x-success-state />
-                <x-error-state /> 
+                <x-error-state />
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                           
+
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 @if (empty($reviews->items()))
-                                    <x-empty-state>{{ 'Reviews' }}</x-empty-state> 
+                                    <x-empty-state>{{ 'Reviews' }}</x-empty-state>
                                 @else
-                                <table class="table table-sm table-bordered border-primary "
-                                    style="width: 100%; border: 1px solid #ddd;">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Rating</th>
-                                            <th style="width: 30%; text-align: center; padding: 10px;">Comment</th> 
-                                            <th style="width: 30%; text-align: center; padding: 10px;">User Id</th>
-                                          
-                                            <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       @foreach ($reviews as $review) 
-                                        <tr>
-                                            <td style="text-align: center; word-wrap: break-word;">
-                                                {{ $loop->iteration }} 
-                                            </td>
-                                            <td style="text-align: center; word-wrap: break-word;">
-                                                {{ $major->rating }} 
-                                            </td>
-                                            <td style="text-align: center; word-wrap: break-word;">
-                                                {{ $major->comment }} 
-                                            </td>
-                                            <td style="text-align: center; word-wrap: break-word;">
-                                                {{ $major->user_id }} 
-                                            </td>
-                                           
-                                            <td style="text-align: center;">
-                                                <form action="" method="POST">
-                                                     @csrf 
-                                                  @method('DELETE') 
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                    <table class="table table-sm table-bordered border-primary "
+                                        style="width: 100%; border: 1px solid #ddd;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10%; text-align: center; padding: 10px;">Id</th>
+                                                <th style="width: 20%; text-align: center; padding: 10px;">Rating</th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">Comment</th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">User_Id</th>
+                                                <th style="width: 30%; text-align: center; padding: 10px;">Order_Id</th>
+                                                <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($reviews as $review)
+                                                <tr>
+                                                    <td style="text-align: center; word-wrap: break-word;">
+                                                        {{ $loop->iteration }}
+                                                    </td>
+                                                    <td style="text-align: center; word-wrap: break-word;">
+                                                        {{ $review->rating }}
+                                                    </td>
+                                                    <td style="text-align: center; word-wrap: break-word;">
+                                                        {{ $review->comment }}
+                                                    </td>
+                                                    <td style="text-align: center; word-wrap: break-word;">
+                                                        <a href="{{ route('users.show', $review->user_id) }}">
+                                                            {{ $review->user_id }}
+                                                        </a>
+
+                                                    </td>
+                                                    <td style="text-align: center; word-wrap: break-word;">
+                                                        <a href="{{ route('orders.show', $review->order->id) }}">
+                                                            {{ $review->order->id }}
+                                                        </a>
+                                                    </td>
+                                                    <td style="text-align: center;">
+                                                        <form action="{{ route('reviews.destroy', $review->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 @endif
                             </div>
                             <!-- /.card-body -->
@@ -75,7 +83,7 @@
                         <!-- /.card -->
                     </div>
                 </div>
-               {{ $reviews->links() }} 
+                {{ $reviews->links() }}
             </div>
         </section>
         <!-- end reviews -->

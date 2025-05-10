@@ -8,6 +8,7 @@ use App\Http\Requests\Book\EditBookRequest;
 use App\Http\Traits\FileSystem;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Publisher;
 use Exception;
 
@@ -17,7 +18,9 @@ class BookController extends Controller
 
    public function index()
    {
-      $books = Book::paginate(10);
+      $books = Book::with([
+         'publisher','category'
+      ])->paginate(10);
       return view('admin.pages.books.index', compact('books'));
    }
 
@@ -30,6 +33,31 @@ class BookController extends Controller
          return response()->back()->with('errors', 'No such Book');
       }
 
+   }
+
+      public function update(EditBookRequest $request, Book $book)
+   {
+      $book = Book::where('id', $book->id)->first();
+      if ($book) {
+         $book->title = $request->title;
+         $book->description = $request->description;
+         $book->author = $request->author;
+         $book->price = $request->price;
+         $book->stock_quantity = $request->stock_quantity;
+         $book->discount = $request->discount;
+         $book->price_after_discount = $request->price_after_discount;
+         $book->category_id = $request->category_id;
+         $book->publisher_id = $request->publisher_id;
+
+         if (isset($request->image)) {
+            $this->deleteImage('/books' . '/' . $book->image);
+            $image_name = $this->uploadImage('books');
+            $book->image = $image_name;
+         }
+         $book->save();
+         return to_route('books.index')->with('success', 'Book Updated Successfully');
+      }
+      return to_route('books.index')->with('errors', 'No such Book');
    }
 
    public function add()
@@ -66,33 +94,15 @@ class BookController extends Controller
    }
    public function destroy(Book $book)
    {
+     $inside_an_order = $book->orders()->exists();
+     if($inside_an_order){
+   return to_route('books.index')
+   ->with('errors', 'Book Can\'t be Deleted Because its inside an order');
+     }
       $this->deleteImage('/books' . "/" . $book->image);
       $book->delete();
       return to_route('books.index')->with('success', 'Book Deleted Successfully');
    }
 
-   public function update(EditBookRequest $request, Book $book)
-   {
-      $book = Book::where('id', $book->id)->first();
-      if ($book) {
-         $book->title = $request->title;
-         $book->description = $request->description;
-         $book->author = $request->author;
-         $book->price = $request->price;
-         $book->stock_quantity = $request->stock_quantity;
-         $book->discount = $request->discount;
-         $book->price_after_discount = $request->price_after_discount;
-         $book->category_id = $request->category_id;
-         $book->publisher_id = $request->publisher_id;
 
-         if (isset($request->image)) {
-            $this->deleteImage('/books' . '/' . $book->image);
-            $image_name = $this->uploadImage('books');
-            $book->image = $image_name;
-         }
-         $book->save();
-         return to_route('books.index')->with('success', 'Book Updated Successfully');
-      }
-      return to_route('books.index')->with('errors', 'No such Book');
-   }
 }

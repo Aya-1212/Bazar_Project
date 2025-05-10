@@ -30,7 +30,7 @@ class MessageController extends ApiController
                 'subject.min' => 'Subject must be less than 50 characters',
                 'content.required' => 'Contant is required',
                 'content.max' => 'Content must be less than 150 characters',
-                'content.min' => 'Subject must be more than 19 characters',
+                'content.min' => 'Content must be more than 19 characters',
             ]
         );
         if ($validator->fails()) {

@@ -20,6 +20,15 @@ class PublisherController extends Controller
         return view('admin.pages.publishers.index', compact('publishers'));
     }
 
+    public function show(Publisher $publisher){
+        try{
+            $publisher = Publisher::findOrFail($publisher->id);
+            return view('admin.pages.publishers.show',compact('publisher'));
+        }catch(Exception $e){
+        return to_route('publishers.index')->with('errors', 'No Such Publisher');
+        }
+    }
+
 
     public function add()
     {
