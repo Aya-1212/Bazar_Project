@@ -38,6 +38,7 @@
                                                 <th style="text-align: center; padding: 10px;">Email</th>
                                                 <th style="text-align: center; padding: 10px;">Subject</th>
                                                 <th style="width: 50%; text-align: center; padding: 10px;">Content</th>
+                                                <th style="text-align: center; padding: 10px;">User_Id</th>
                                                 <th style="text-align: center; padding: 10px;">Delete</th>
                                             </tr>
                                         </thead>
@@ -51,6 +52,11 @@
                                                     <td style="text-align: center;">{{ $message->email }}</td>
                                                     <td style="text-align: center;">{{ $message->subject }}</td>
                                                     <td style="text-align: center;">{{ $message->content }} </td>
+                                                    <td style="text-align: center;">
+                                                        <a href="{{ route('users.show', $message->user_id) }}">
+                                                            {{ $message->user_id }} 
+                                                        </a>
+                                                    </td>
                                                     <td style="text-align: center;">
                                                         <form action="{{ route('messages.destroy', $message->id) }}" method="POST" >
                                                             @csrf

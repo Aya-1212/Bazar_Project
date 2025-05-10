@@ -16,6 +16,17 @@ class UserController extends Controller
         return view('admin.pages.users.index', compact('users'));
     }
 
+    public function show(User $user)
+    {
+        try {
+            $user = User::findOrFail($user->id);
+            return view('admin.pages.users.show', compact('user'));
+
+        } catch (Exception $e) {
+            return to_route(route: 'users.index')->with('errors', 'No Such User');
+        }
+    }
+
     public function add()
     {
         return view('admin.pages.users.add');

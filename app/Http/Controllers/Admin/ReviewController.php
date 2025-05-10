@@ -10,9 +10,10 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::paginate(10);
+        $reviews = Review::with('order')->paginate(10);
         return view('admin.pages.reviews.index', compact('reviews'));
     }
+    
     public function destroy(Review $review) {
          $review->delete();
          return to_route('reviews.index')->with('success','Review Deleted Successfully');

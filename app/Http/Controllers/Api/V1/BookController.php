@@ -11,13 +11,12 @@ use Illuminate\Http\Request;
 
 class BookController extends ApiController
 {
-    
+
     public function index(Request $request)
     {
         $query = trim($request->query("limit"));
         if ($query == 2) {
             $books = Book::limit(2)->get();
-    
             return $this->apiResponse(
                 [
                     'books' => BookResource::collection($books),
@@ -43,15 +42,12 @@ class BookController extends ApiController
                     "prev" => $books->previousPageUrl(),
                     "next" => $books->nextPageUrl(),
                 ],
-
             ]
             ,
             message: "Book Returned Successfully"
         );
-
-
     }
-    
+
     public function show($id)
     {
         try {
@@ -100,40 +96,43 @@ class BookController extends ApiController
         }
     }
 
-    public function search (Request $request){
+    public function search(Request $request)
+    {
         $query = trim($request->query('title'));
-    
+
         if (empty($query)) {
             return $this->apiResponse(message: 'Search query is empty.', status: 400);
         }
-    
-              $books = Book::where('title','like','%'.$query.'%')
-              ->orWhere('author','like','%'.$query.'%')
-              ->paginate('10');
-              if ($books->isEmpty()) {
-                return $this->apiResponse(
-                    message: 'No books found matching your search.', status: 201);
-              }
-                    
-        
-              return $this->apiResponse([
-                'books' => BookResource::collection( $books ),
+        $books = Book::where('title', 'like', '%' . $query . '%')
+            ->orWhere('author', 'like', '%' . $query . '%')
+            ->paginate('10');
+
+            
+        if ($books->isEmpty()) {
+            return $this->apiResponse(
+                message: 'No books found matching your search.',
+                status: 201
+            );
+        }
+        return $this->apiResponse(
+            [
+                'books' => BookResource::collection($books),
                 "meta" => [
-                            "total" => $books->total(),
-                            "per_page" => $books->perPage(),
-                            "current_page" => $books->currentPage(),
-                            "last_page" => $books->lastPage(),
-                        ],
-                        "links" => [
-                            "first" => $books->url(1),
-                            "last" => $books->url($books->lastPage()),
-                            "prev" => $books->previousPageUrl(),
-                            "next" => $books->nextPageUrl(),
-                        ],
-                
-             ]
-           , message:"Book Returned Successfully" );
-           
+                    "total" => $books->total(),
+                    "per_page" => $books->perPage(),
+                    "current_page" => $books->currentPage(),
+                    "last_page" => $books->lastPage(),
+                ],
+                "links" => [
+                    "first" => $books->url(1),
+                    "last" => $books->url($books->lastPage()),
+                    "prev" => $books->previousPageUrl(),
+                    "next" => $books->nextPageUrl(),
+                ],
+            ]
+            ,
+            message: "Book Returned Successfully"
+        );
     }
 
     public function sale(Request $request)
@@ -141,7 +140,7 @@ class BookController extends ApiController
         $query = trim($request->query("limit"));
         if ($query == 2) {
             $books = Book::where('discount', '>=', 40)->limit(2)->get();
-    
+
             return $this->apiResponse(
                 [
                     'books' => BookResource::collection($books),
@@ -181,7 +180,7 @@ class BookController extends ApiController
             'slider' => BookResource::collection($books),
         ], message: 'Books Returned Successfully');
     }
-    
+
     public function filter(Request $request)
     {
         $query = trim($request->query('price'));
@@ -221,7 +220,7 @@ class BookController extends ApiController
             message: "Books Returned Successfully"
         );
     }
-    
+
     public function getByPublisher($id)
     {
         try {

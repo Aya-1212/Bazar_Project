@@ -47,8 +47,8 @@
                                                 <th style="width: 10%;text-align: center; padding: 10px;">Stock Quantity
                                                 </th>
                                                 <th style="text-align: center; padding: 10px;">ISBN</th>
-                                                <th style="text-align: center; padding: 10px;">Category Id</th>
-                                                <th style="text-align: center; padding: 10px;">Publisher Id</th>
+                                                <th style="text-align: center; padding: 10px;">Category_Id</th>
+                                                <th style="text-align: center; padding: 10px;">Publisher_Id</th>
                                                 <th style="text-align: center; padding: 10px;">Edit</th>
                                                 <th style="text-align: center; padding: 10px;">Delete</th>
                                             </tr>
@@ -89,7 +89,9 @@
                                                         {{ $book->category_id }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->publisher_id }}
+                                                        <a href="{{ route('publishers.show', $book->publisher->id) }}">
+                                                            {{ $book->publisher_id }}
+                                                        </a>
                                                     </td>
                                                     <td style="text-align: center;">
                                                         <a class="btn btn-success"

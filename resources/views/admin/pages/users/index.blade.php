@@ -39,12 +39,12 @@
                                             <tr>
                                                 <th style="width: 10%; text-align: center; padding: 10px;">#</th>
                                                 <th style="width: 20%; text-align: center; padding: 10px;">Name</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Email</th>
+                                                <th style="width: 20%; text-align: center; padding: 10px;">Email</th>
                                                 <th style="width: 30%; text-align: center; padding: 10px;">Image</th>
                                                 <th style="width: 30%; text-align: center; padding: 10px;">Phone</th>
-                                                <th style="width: 30%; text-align: center; padding: 10px;">Address</th>
+                                                <th style="width: 40%; text-align: center; padding: 10px;">Address</th>
                                                 <th style="width: 30%; text-align: center; padding: 10px;">City</th>
-                                                <th style="width: 20%; text-align: center; padding: 10px;">Delete</th>
+                                                <th style="text-align: center; padding: 10px;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -68,10 +68,10 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
 
     */
     Route::get('/publishers', [PublisherController::class, 'index'])->name('publishers.index');
+    Route::get('/publishers/{publisher}', [PublisherController::class, 'show'])->name('publishers.show');
     Route::get('/publishers/add', [PublisherController::class, 'add'])->name('publishers.add');
-    Route::get('/publishers/{publisher}', [PublisherController::class, 'edit'])->name('publishers.edit');
     Route::post('/publishers', [PublisherController::class, 'store'])->name('publishers.store');
-    Route::get('/publishers/{publisher}', [PublisherController::class, 'edit'])->name('publishers.edit');
+    Route::get('/publishers/{publisher}/edit', [PublisherController::class, 'edit'])->name('publishers.edit');
     Route::put('/publishers/{publisher}', [PublisherController::class, 'update'])->name('publishers.update');
     Route::delete('/publishers/{publisher}', [PublisherController::class, 'destroy'])->name('publishers.destroy');
 
@@ -91,9 +91,10 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
     
     */
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{order}', [OrderController::class, 'edit'])->name('orders.edit');
-
-
+    Route::get('/orders/{order}',[OrderController::class,'show'])->name('orders.show');
+    Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::put('/orders/{order}',[OrderController::class,'update'])->name('orders.update');
+    Route::delete('/orders/{order}',[OrderController::class,'destroy'])->name('orders.destroy');
     /*
     
     Books CRUD
@@ -103,7 +104,6 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
     Route::get('/books/add', [BookController::class, 'add'])->name('books.add');
     Route::get('/books/{book}', [BookController::class, 'edit'])->name('books.edit');
     Route::post('/books', [BookController::class, 'store'])->name('books.store');
-    Route::get('/books/{book}', [BookController::class, 'edit'])->name('books.edit');
     Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
 
@@ -114,9 +114,10 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
     
     */
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}',[UserController::class,'show'])->name('users.show');
     Route::get('/users/add', [UserController::class, 'add'])->name('users.add');
     Route::post('/users',[UserController::class,'store'])->name('users.store');
-    Route::delete('/users' , [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/users/{user}' , [UserController::class, 'destroy'])->name('users.destroy');
 
 
     /*
@@ -129,7 +130,3 @@ Route::middleware('verify.admin')->prefix('/dashboard')->group(function () {
 
 
 });
-
-Route::get('/view',function (){
-    return view('admin.pages.orders.view');
-} );
