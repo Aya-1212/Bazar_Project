@@ -16,14 +16,14 @@
                     <form class="form border p-3" method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Category Name</label>
+                            <label for="" class="form-label">Category Name <span style="color: red;">*</span></label>
                             <input type="text" value="{{ old('title') }}" name="title" class="form-control">
                             @error('title')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Image</label>
+                            <label for="" class="form-label">Image <span style="color: red;">*</span></label>
                             <input type="file" value="{{ old('image') }}" name="image" class="form-control">
                             @error('image')
                                 <span class="text-danger">{{ $message }}</span>

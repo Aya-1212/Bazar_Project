@@ -18,7 +18,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label for="">Name <span style="color: red;">*</span></label>
                             <input type="text" name="title" value="{{ $book->title }}" class="form-control" required>
                             @error('title')
                                 <span class="text-danger">{{ $message }}</span>
@@ -26,8 +26,8 @@
                         </div>
                         <div class="row">
                             <div class="mb-3">
-                                <img src="{{ asset('upload/books' . '/' . $book->image) }}" alt="book" class="img-fluid "
-                                    height="200" width="200">
+                                <img src="{{ asset('upload/books' . '/' . $book->image) }}" alt="book"
+                                    class="img-fluid " height="200" width="200">
                             </div>
                             <div class="mb-3">
                                 <label for="image">Upload Image</label>
@@ -38,29 +38,32 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="">Description</label>
-                            <input type="text" name="description" value="{{ $book->description }}" class="form-control"
-                                required>
-                            @error('description')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <<<<<<< HEAD <label for="">Description</label>
+                                <input type="text" name="description" value="{{ $book->description }}"
+                                    class="form-control" required>
+                                =======
+                                <label for="">Description <span style="color: red;">*</span></label>
+                                <input type="text" name="description" value="{{ $book->description }}"
+                                    class="form-control" required>
+                                >>>>>>> 346c02f6c685eb0119186dd96bcd5409114b1f30
+                                @error('description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
 
                         </div>
                         <div class="mb-3">
-                            <label for="">Author</label>
+                            <label for="">Author <span style="color: red;">*</span></label>
                             <input type="text" name="author" value="{{ $book->author }}" class="form-control" required>
                             @error('author')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-
                         </div>
                         <div class="mb-3">
-                            <label for="">Price</label>
+                            <label for="">Price <span style="color: red;">*</span></label>
                             <input type="text" name="price" value="{{ $book->price }}" class="form-control" required>
                             @error('price')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-
                         </div>
                         <div class="mb-3">
                             <label for="">Discount</label>
@@ -77,10 +80,8 @@
                             @error('price_after_discount')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-
                         </div>
-                        <div class="mb-3">
-                            <label for="">Stock Quantity</label>
+                        <div class="mb-3"> <label for="">Stock Quantity</label>
                             <input type="text" name="stock_quantity" value="{{ $book->stock_quantity }}"
                                 class="form-control" required>
                             @error('stock_quantity')
@@ -97,7 +98,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="mb-3">
                                 <label for="">Publishers</label>
                                 <select name="publisher_id" class="form-control w-50">

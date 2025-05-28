@@ -17,28 +17,28 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Name</label>
+                            <label for="" class="form-label">Name <span style="color: red;">*</span></label>
                             <input type="text" value="{{ old('name') }}" name="name" class="form-control">
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
+                            <label for="" class="form-label">Email <span style="color: red;">*</span></label>
                             <input type="email" value="{{ old('email') }}" name="email" class="form-control">
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Password</label>
+                            <label for="" class="form-label">Password <span style="color: red;">*</span></label>
                             <input type="password" value="{{ old('password') }}" name="password" class="form-control">
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Password Confirmation</label>
+                            <label for="" class="form-label">Password Confirmation <span style="color: red;">*</span></label>
                             <input type="password" value="{{ old('password_confirmation') }}" name="password_confirmation"
                                 class="form-control">
                             @error('password_confirmation')

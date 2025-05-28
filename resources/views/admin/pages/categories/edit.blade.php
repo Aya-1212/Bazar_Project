@@ -18,7 +18,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label for="">Name <span style="color: red;">*</span></label>
                             <input type="text" name="title" value="{{ $category->title }}" class="form-control" required>
                             @error('title')
                                 <span class="text-danger">{{ $message }}</span>
@@ -29,7 +29,7 @@
                                 <img src="{{ asset('upload/categories'.'/'.$category->image) }}" alt="category" class="img-fluid " height="200" width="200">
                             </div>
                             <div class="mb-3">
-                                <label for="image">Upload Image</label>
+                                <label for="image">Upload Image <span style="color: red;">*</span></label>
                                 <input type="file" name="image" value="" class="form-control">
                                 @error('image')
                                     <span class="text-danger">{{ $message }}</span>
