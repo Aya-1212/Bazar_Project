@@ -18,7 +18,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label for="">Name <span style="color: red;">*</span></label>
                             <input type="text" name="title" value="{{ $book->title }}" class="form-control" required>
                             @error('title')
                                 <span class="text-danger">{{ $message }}</span>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="">Description</label>
+                            <label for="">Description <span style="color: red;">*</span></label>
                             <input type="text" name="description" value="{{ $book->description }}" class="form-control" required>
                             @error('description')
                                 <span class="text-danger">{{ $message }}</span>
@@ -45,7 +45,7 @@
                     
                         </div>
                         <div class="mb-3">
-                            <label for="">Author</label>
+                            <label for="">Author <span style="color: red;">*</span></label>
                             <input type="text" name="author" value="{{ $book->author }}" class="form-control" required>
                             @error('author')
                                 <span class="text-danger">{{ $message }}</span>
@@ -53,7 +53,7 @@
                     
                         </div>
                         <div class="mb-3">
-                            <label for="">Price</label>
+                            <label for="">Price <span style="color: red;">*</span></label>
                             <input type="text" name="price" value="{{ $book->price }}" class="form-control" required>
                             @error('price')
                                 <span class="text-danger">{{ $message }}</span>
@@ -77,7 +77,7 @@
                     
                         </div>
                         <div class="mb-3">
-                            <label for="">Stock Quantity</label>
+                            <label for="">Stock Quantity <span style="color: red;">*</span></label>
                             <input type="text" name="stock_quantity" value="{{ $book->stock_quantity }}" class="form-control" required>
                             @error('stock_quantity')
                                 <span class="text-danger">{{ $message }}</span>
@@ -85,7 +85,7 @@
                     
                         </div>
                         <div class="mb-3">
-                            <label for="">Category Id</label>
+                            <label for="">Category Id <span style="color: red;">*</span></label>
                             <input type="text" name="category_id" value="{{ $book->category_id }}" class="form-control" required>
                             @error('category_id')
                                 <span class="text-danger">{{ $message }}</span>
@@ -93,7 +93,7 @@
                     
                         </div>
                         <div class="mb-3">
-                            <label for="">Publisher Id</label>
+                            <label for="">Publisher Id <span style="color: red;">*</span></label>
                             <input type="text" name="publisher_id" value="{{ $book->publisher_id }}" class="form-control" required>
                             @error('publisher_id')
                                 <span class="text-danger">{{ $message }}</span>

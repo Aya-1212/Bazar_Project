@@ -17,14 +17,14 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label for="">Name <span style="color: red;">*</span></label>
                             <input type="text" name="name" value="{{ $admin->name }}" class="form-control" required>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="">Email</label>
+                            <label for="">Email <span style="color: red;">*</span></label>
                             <input type="email" name="email" value="{{ $admin->email }}" class="form-control" required>
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
