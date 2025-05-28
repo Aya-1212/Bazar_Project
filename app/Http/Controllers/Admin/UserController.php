@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\AddUserRequest;
+use App\Http\Traits\FileSystem;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    use FileSystem;
     public function index()
     {
         $users = User::paginate(10);
@@ -42,7 +44,12 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        isset($request->image) ? $user->image = $request->image : $user->image = "user.jpeg";
+        if (isset($request->image)) {
+            $image_name = $this->uploadImage('users');
+            $user->image = $image_name;
+        } else {
+            $user->image = "user.jpeg";
+        }
         $user->save();
         return to_route('users.index')->with('success', 'User Added Successfully');
 

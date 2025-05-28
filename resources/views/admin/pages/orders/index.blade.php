@@ -73,7 +73,7 @@
                                                         @if ($order->review_id == null)
                                                             {{ 'N/A' }}
                                                         @else
-                                                            {{ $order->review->id }}
+                                                        {{ $order->review->id }}
                                                         @endif
                                                     </td>
                                                     <td style="text-align: center;">

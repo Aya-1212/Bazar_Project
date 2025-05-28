@@ -26,7 +26,7 @@ class EditAdminRequest extends FormRequest
             'email' => 'required|email',
         ];
         if($this->__isset('password') && $this->__isset('password_confirmation') ){
-        $rules['password'] = 'required|string|min:8|max:10|';
+        $rules['password'] = 'required|string|min:8|max:20';
         $rules['password_confirmation'] = 'required|same:password';
         }
         return $rules;

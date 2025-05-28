@@ -28,7 +28,7 @@ class AddAdminRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
-                'max:10',
+                'max:20',
             ],
             'password_confirmation' => 'required|same:password'
         ];
