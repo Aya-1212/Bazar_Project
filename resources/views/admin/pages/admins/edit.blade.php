@@ -13,7 +13,8 @@
                     <h1 class="font-weight-bold text-center" style="font-size: 2em; color: #007bff;">
                         Edit Admin
                     </h1>
-                    <form class="form border p-3" method="POST" action="{{ route('admins.update', $admin->id) }}">
+                    <form class="form border p-3" method="POST" 
+                    action="{{ route('admins.update', $admin->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -32,7 +33,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control" >
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

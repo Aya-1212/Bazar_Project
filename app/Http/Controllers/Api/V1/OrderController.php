@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Controllers\Controller;
 use App\Http\Traits\FileSystem;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -119,7 +117,7 @@ class OrderController extends ApiController
         $validator = Validator::make(
             $data,
             [
-                'status' => 'required|string|exists:orders,status',
+                'status' => 'required|string|in:pending,processed,shipped,completed',
             ],
             [
                 'status.required' => 'The status field is required.',

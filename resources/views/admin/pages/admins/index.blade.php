@@ -63,9 +63,9 @@
                                                                 class="btn btn-success">Edit</a>
                                                         </td>
                                                         <td style="text-align: center;">
-                                                            <form action="" method="POST">
-                                                                {{-- @csrf --}}
-                                                                {{-- @method('DELETE') --}}
+                                                            <form action="{{ route('admins.destroy',$admin->id) }}" method="POST">
+                                                                @csrf
+                                                            @method('DELETE')
                                                                 <button class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </td>

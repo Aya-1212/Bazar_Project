@@ -22,7 +22,7 @@ class AddPublisherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:30|exists:publishers,name',
+            'name' => 'required|string|max:30',
             'phone' => 'required|regex:/^(\+?\d{10,15})$/',
             'email' => 'required|email',
         ];
