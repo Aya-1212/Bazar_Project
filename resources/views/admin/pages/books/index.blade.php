@@ -73,13 +73,26 @@
                                                         {{ $book->author }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->price }} $
+                                                        {{ $book->price }} EGP
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->discount  ?? 'N/A'  }}%
+                                                        @if (isset($book->discount))
+                                                             {{ $book->discount }}%
+                                                        @else
+                                                           {{ 'N/A' }} 
+                                                        @endif
+                                                       
                                                     </td>
+
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->price_after_discount  ?? 'N/A' }}$ 
+                                                        @if (isset($book->price_after_discount))
+                                                             {{ $book->price_after_discount }} EGP
+                                                        @else
+                                                            
+                                                        {{'N/A'  }}
+                    
+                                                        @endif
+                                                       
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         {{ $book->stock_quantity }}

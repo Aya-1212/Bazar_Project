@@ -11,7 +11,10 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::with('order')->paginate(10);
+        $reviews = Review::with([
+            'order', 
+            'user',
+        ])->paginate(10);
         return view('admin.pages.reviews.index', compact('reviews'));
     }
 
