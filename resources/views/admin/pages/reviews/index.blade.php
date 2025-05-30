@@ -54,9 +54,9 @@
                                                         {{ $review->comment }}
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        <a href="{{ route('users.show', $review->user_id) }}">
-                                                            {{ $review->user_id }}
-                                                        </a>
+                                                       <a href="{{ route('users.show', $review->user->id) }}">
+                                                        {{ $review->user_id }}
+                                                                 </a>
 
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
