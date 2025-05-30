@@ -33,14 +33,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Password</label>
-                            <input type="password" name="password" class="form-control" >
+                            <input type="password" name="password" class="form-control" placeholder="********">
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Password Confirmation</label>
-                            <input type="password" name="password_confirmation" class="form-control">
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="********">
                             @error('password_confirmation')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

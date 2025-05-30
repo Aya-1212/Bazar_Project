@@ -38,14 +38,13 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <<<<<<< HEAD <label for="">Description</label>
+                         <label for="">Description</label>
                                 <input type="text" name="description" value="{{ $book->description }}"
                                     class="form-control" required>
-                                =======
+                               
                                 <label for="">Description <span style="color: red;">*</span></label>
                                 <input type="text" name="description" value="{{ $book->description }}"
                                     class="form-control" required>
-                                >>>>>>> 346c02f6c685eb0119186dd96bcd5409114b1f30
                                 @error('description')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

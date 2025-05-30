@@ -60,15 +60,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Password <span style="color: red;">*</span></label>
-                            <input type="password" value="{{ old('password') }}" name="password" class="form-control">
+                            <input type="password"  name="password" placeholder="********" class="form-control">
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Password Confirmation <span style="color: red;">*</span></label>
-                            <input type="password" value="{{ old('password_confirmation') }}" name="password_confirmation"
-                                class="form-control">
+                            <input type="password"  name="password_confirmation"
+                                class="form-control" placeholder="********">
                             @error('password_confirmation')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

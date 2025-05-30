@@ -159,7 +159,6 @@ class OrderController extends ApiController
         });
         return $this->apiResponse(
             $orders,
-            $message = "Books Returned Successfully",
         );
     }
     public function showSingleOrder(Request $request){
@@ -208,7 +207,6 @@ class OrderController extends ApiController
     });
     return $this->apiResponse(
         $order,
-        $message = "Books Returned Successfully",
     );
     }
     

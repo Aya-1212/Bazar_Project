@@ -28,7 +28,14 @@ class BookController extends Controller
    {
       try {
          $book = Book::findOrFail($book->id);
-         return view('admin.pages.books.edit', compact('book'));
+         $categories = Category::all();
+         $publishers = Publisher::all();
+         $books = Book::with([
+         'publisher','category'
+      ])->paginate(10);
+         return view('admin.pages.books.edit', compact([
+            'book','publishers','categories'
+         ]));
       } catch (Exception $e) {
          return response()->back()->with('errors', 'No such Book');
       }

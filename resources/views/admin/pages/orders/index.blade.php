@@ -73,7 +73,9 @@
                                                         @if ($order->review_id == null)
                                                             {{ 'N/A' }}
                                                         @else
-                                                        {{ $order->review->id }}
+                                                        <a href="{{ route('reviews.show', $order->review_id) }}">
+                                                            {{ $order->review->id }}
+                                                        </a>
                                                         @endif
                                                     </td>
                                                     <td style="text-align: center;">
