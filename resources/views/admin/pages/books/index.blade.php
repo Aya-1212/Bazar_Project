@@ -99,7 +99,7 @@
                                                     </td>
                                                     <th style="text-align: center; padding: 10px;">{{ $book->isbn_code }}</th>
                                                     <td style="text-align: center; word-wrap: break-word;">
-                                                        {{ $book->category_id }}
+                                                        <a href="{{ route('categories.show', $book->category->id) }}">{{ $book->category_id }}</a>
                                                     </td>
                                                     <td style="text-align: center; word-wrap: break-word;">
                                                         <a href="{{ route('publishers.show', $book->publisher->id) }}">

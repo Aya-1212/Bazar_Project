@@ -80,7 +80,13 @@ class OrderController extends ApiController
             ]);
 
             foreach ($cart->books as $book) {
-
+                if (! $book->stock_quantity > $book->pivot->quantity) {
+                    return $this->apiResponse(
+                        message: "Not enough stock for book: {$book->title}",
+                        status: 422
+                    );
+                }
+                $book->decrement('stock_quantity', $book->pivot->quantity);
                 $order->books()->attach($book->id, [
                     'quantity' => $book->pivot->quantity,
                     'sub_total' => $book->pivot->sub_amount,
@@ -161,7 +167,8 @@ class OrderController extends ApiController
             $orders,
         );
     }
-    public function showSingleOrder(Request $request){
+    public function showSingleOrder(Request $request)
+    {
         $user = Auth::user();
         $data = $request->query();
         $validator = Validator::make(
@@ -182,32 +189,32 @@ class OrderController extends ApiController
             );
         }
         $order = Order::with('books')->where("user_id", $user->id)
-        ->where('id', $data['order_id'])->get();
-    $formattedOrder = $order->map(function ($order) {
-        $books = $order->books->map(function ($book) {
+            ->where('id', $data['order_id'])->get();
+        $formattedOrder = $order->map(function ($order) {
+            $books = $order->books->map(function ($book) {
+                return [
+                    'title' => $book->title,
+                    'image' => $book->image,
+                    'price' => $book->price,
+                    'price_after_discount' => $book->price_after_discount,
+                    'quantity' => $book->pivot->quantity,
+                    'sub_total' => $book->pivot->sub_amount,
+                ];
+            });
+
             return [
-                'title' => $book->title,
-                'image' => $book->image,
-                'price' => $book->price,
-                'price_after_discount' => $book->price_after_discount, 
-                'quantity' => $book->pivot->quantity,
-                'sub_total' => $book->pivot->sub_amount,
+                'order_id' => $order->id,
+                'status' => $order->status,
+                'total_amount' => $order->total_amount,
+                'payment_method' => $order->payment_method,
+                'created_at' => $order->created_at,
+                'updated_at' => $order->updated_at,
+                'books' => $books,
             ];
         });
-
-        return [
-            'order_id' => $order->id,
-            'status' => $order->status,
-            'total_amount' => $order->total_amount,
-            'payment_method' => $order->payment_method,
-            'created_at' => $order->created_at,
-            'updated_at' => $order->updated_at,
-            'books' => $books,
-        ];
-    });
-    return $this->apiResponse(
-        $order,
-    );
+        return $this->apiResponse(
+            $order,
+        );
     }
-    
+
 }

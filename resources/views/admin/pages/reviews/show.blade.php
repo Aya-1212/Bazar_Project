@@ -1,6 +1,6 @@
 @extends('admin.app')
 
-@section('title', 'Order Details')
+@section('title', 'Review Details')
 
 @section('content')
     <div class="content-wrapper">
@@ -41,11 +41,11 @@
                         @endif
                         <h5 class="mt-4 mb-3">Order Info</h5>
                         <ul>
-                            <li><strong>Order ID:</strong> {{ $order->id }}</li>
-                            <li><strong>Status:</strong> {{ $order->status }}</li>
-                            <li><strong>Total Amount:</strong> {{ $order->total_amount }} $</li>
-                            <li><strong>Payment Method:</strong> {{ $order->payment_method }}</li>
-                            <li><strong>Ordered At:</strong> {{ $order->created_at->format('Y-m-d H:i') }}</li>
+                            <li><strong>Order ID:</strong> {{ $review->order->id }}</li>
+                            <li><strong>Status:</strong> {{ $review->order->status }}</li>
+                            <li><strong>Total Amount:</strong> {{ $review->order->total_amount }} $</li>
+                            <li><strong>Payment Method:</strong> {{ $review->order->payment_method }}</li>
+                            <li><strong>Ordered At:</strong> {{ $review->order->created_at->format('Y-m-d H:i') }}</li>
                         </ul>
                     </div>
                 </div>

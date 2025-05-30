@@ -21,6 +21,15 @@ class CategoryController extends Controller
       return view('admin.pages.categories.index', compact('categories'));
    }
 
+   public function show(Category $category){
+      try {
+         $category = Category::findOrFail($category->id);
+         return view('admin.pages.categories.show', compact('category'));
+      } catch (Exception $e) {
+         return response()->back()->with('errors', 'No such category');
+      }
+   }
+
    public function edit(Category $category)
    {
       try {
